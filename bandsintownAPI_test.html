@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>bandsintown API test</title>
+</head>
+<body>
+
+	http://api.bandsintown.com/artists/tycho/events.json?api_version=2.0&app_id=RUCBProject
+
+</body>
+</html>
+
+Examples
+Recommended upcoming shows for Skrillex fans within 10 miles of Boston, MA:
+http://api.bandsintown.com/artists/Skrillex/events/recommended?location=Boston,MA&radius=10&app_id=YOUR_APP_ID&api_version=2.0&format=json
+Recommended upcoming shows for Crystal Castles fans (excluding Crystal Castles shows) within 50 miles of your location:
+http://api.bandsintown.com/artists/Crystal%20Castles/events/recommended?location=use_geoip&radius=50&app_id=YOUR_APP_ID&api_version=2.0&format=json
+Recommended upcoming shows for Metallica fans using music brainz id (artist name unknown) near San Diego, CA:
+http://api.bandsintown.com/artists/mbid_65f4f0c5-ef9e-490c-aee3-909e7ae6b2ab/events/recommended?location=San+Diego,CA&format=xml&api_version=2.0&app_id=YOUR_APP_ID
+Recommended upcoming shows for Nas fans near London, United Kingdom (using JSONP callback):
+http://api.bandsintown.com/artists/Nas/events/recommended?format=json&app_id=YOUR_APP_ID&api_version=2.0&location=London,United+Kingdom&callback=showEvents
+Recommended upcoming Lil Wayne concerts (using facebook page id) in New York, NY during January 2017:
+http://api.bandsintown.com/artists/Lil%20Wayne/events/recommended?format=json&artist_id=fbid_6885814958&api_version=2.0&app_id=YOUR_APP_ID&date=2017-01-01,2017-01-31&location=New+York,NY
