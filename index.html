@@ -1,0 +1,44 @@
+<html>
+<head>
+	<title>Test Bandsintown API
+	</title>
+
+</head>
+
+<body>
+
+
+<!-- <div class = 'datetime'</div>
+<div class = 'venue.city'</div>
+ -->
+<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+<script type="text/javascript"> </script>
+
+<div id = "artist">
+    <h1>Spur of the Moment - Music You Love Nearby</h1>
+	console.log("it works");
+</div>
+var favoriteband = ['98 degrees', 'foo fighters', 'skillrex'];
+
+var queryURL = "";
+
+$.ajax({url: queryURL + "favoriteband"})
+ 	$(".artist").html("Artist:   " + response.artist) method: 'GET')
+
+ .done(function(response) {
+
+ 	console.log(response);
+
+<!--  	$(".datetime").html("Datetime:   " + response.datetime);
+ 	$(".venue.city").html("Venue:   " + response.venue.city);
+
+ 	console.log("Artist:   " + response.wind.speed);
+ 	console.log("Datetime:   " +  response.main.humidity);
+ 	console.log("Venue:   " + response.weather); -->
+
+ });
+
+</script>
+
+</body>
+</html>
