@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Spur of the Moment</title>
+	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<!-- Latest compiled and minified CSS & JS -->
+	<script src="https://code.jquery.com/jquery.js"></script>
+
+</head>
+<body>
+	heading: 
+		Title: Spur of the Moment
+		App Description: Find music you love nearby
+		Login Link: Facebook
+	Welcome Div:
+		hide the Map div before person logs into facebook
+		display a welcome div that explains if you log in with facebook you will be able to get all of the bands you like and listen to and see what concerts are going on around you at this current moment that are similar to bands you listen to
+		shows the log in button for facebook 
+			- once logged in with facebook this welcome div should change to a new div
+	Logged in Div:
+		- once logged in with facebook the welcome div hides and this div is created
+		- HEADING: find out what events are going on around me! (this must have an onclick function that runs the javascript explained below)
+	Map Div:
+		ON THE CLICK OF THE LOGGED IN DIV:
+			- load bands person likes from facebook & push into array in firebase & push this into a search of BandsInTown API
+				- stores all of the facebook data in an object in Firebase so we can reference it later
+					- log it by user facebook
+						then within the object have an object for each band the person likes and the data that gets pulled from facebook
+			- gets current location from user & pushes into GoogleMaps API (this automatically happens on the page load of the google maps API)
+			- pull concerts based on bands a person likes that are within 5 miles of the current location from the BandsInTown API (or the map changes based on how zoomed in you are)
+				- stores all concert/band data that is pulled from Bands in town into another object in Firebase to store all of the concert data
+				- we can then pull this information from the firebase and put it into 
+			- pushes all of these events into GoogleMaps & puts a pin for each event on the map
+			- also creates a table below the map that provides the description for each event ( this can be created through the google maps API to appear as a list on the side or as a pop up that shows the info when a tag is clicked on the map )
+				- Name of Location where event is taking place
+				- Location address
+				- Band Name
+				- Genre of the music (maybe just an icon for type of music like an electric guitar for )
+				- Start time of event
+				- Buy tickets link
+				- Maybe click a link that gives you directions on the map to where you are going
+		Map: this is where the google map goes
+
+</body>
+</html>
