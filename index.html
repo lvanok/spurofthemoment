@@ -19,8 +19,30 @@
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
 
+	<!-- Facebook source link -->
+
 </head>
 <body>
+<!-- FACEBOOK SCRIPT - needs to be in the HTML and not the javascript DON'T EDIT-->
+<script>
+ window.fbAsyncInit = function() {
+   FB.init({
+     appId      : 'RUCB_Project',
+     xfbml      : true,
+     version    : 'v2.5'
+   });
+ };
+
+ (function(d, s, id){
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<!-- REST OF HTML -->
   	<div class="jumbotron">
   		<div class="container">
   			<h1 class="text-center">HEADER</h1>
@@ -34,6 +56,8 @@
   			</h1>
   			<p class="text-center"> information about app</p>
   			<div> button for facebook log in </div>
+  			<!-- FACEBOOK LOG IN BUTTON -->
+  			<div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="false"></div>
   		</div>
   	</div>
 
@@ -48,6 +72,7 @@
 	</footer>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaNIL3WrVXoIxK_jN1LoFluEYKKY8-qzw&signed_in=true&callback=initMap" async defer></script>
+<script src="assets/javascript/app.js"></script>
 
 </body>
 </html>

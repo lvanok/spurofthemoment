@@ -1,29 +1,14 @@
 var userData = new Firebase('https://spurofthemoment.firebaseio.com/');
-//FACEBOOK API
-FB.api(
- '/me/music',
- 'GET',
- {"fields":"id,name,genre","limit":"999999"},
- function(response) {
-     // Insert your code here
- }
-);
-//FACEBOOK SCRIPT
-window.fbAsyncInit = function() {
-    FB.init({
-    appId      : '1729912430587543',
-    xfbml      : true,
-    version    : 'v2.5'
-    });
-};
 
-(function(d, s, id){
-    var js, fjs = d.getElementsByTagName(s)[0];
-       if (d.getElementById(id)) {return;}
-       js = d.createElement(s); js.id = id;
-       js.src = "//connect.facebook.net/en_US/sdk.js";
-       fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
+// //FACEBOOK API
+// FB.api(
+//  '/me/music',
+//  'GET',
+//  {"fields":"id,name,genre","limit":"999999"},
+//  function(response) {
+//      // Insert your code here
+//  }
+// );
 
 
 //MAP SCRIPT
@@ -36,9 +21,9 @@ var map;
     myCenter = new google.maps.LatLng(40.6, -74);
 
     //initializes google map
-    function initialize() {
+    function initMap() {
       	var brooklyn = {lat: +40.6, lng: -74},
-        var map = new google.maps.Map(document.getElementById('googleMap'), {
+        map = new google.maps.Map(document.getElementById('googleMap'), {
           center: {lat: +40.663, lng: -73.982},
           zoom: 14
         });
