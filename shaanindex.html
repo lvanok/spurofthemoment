@@ -1,44 +1,68 @@
-var userData = new Firebase('https://spurofthemoment.firebaseio.com/');
-//FACEBOOK API
-FB.api(
- '/me/music',
- 'GET',
- {"fields":"id,name,genre","limit":"999999"},
- function(response) {
-     // Insert your code here
- }
-);
-//FACEBOOK SCRIPT
-window.fbAsyncInit = function() {
-    FB.init({
-    appId      : '1729912430587543',
-    xfbml      : true,
-    version    : 'v2.5'
-    });
-};
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
 
-(function(d, s, id){
-    var js, fjs = d.getElementsByTagName(s)[0];
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 100%;
+      }
+      #container {
+      	height: 90%;
+      	margin-top: 5%;
+      	margin-bottom: 5%;
+      }
+
+      #jumbotron
+      	
+
+      }
+    </style>
+    
+  </head>
+  <body>
+  <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+  <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '1729912430587543',
+        xfbml      : true,
+        version    : 'v2.5'
+      });
+    };
+
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
        if (d.getElementById(id)) {return;}
        js = d.createElement(s); js.id = id;
        js.src = "//connect.facebook.net/en_US/sdk.js";
        fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-
-
-//MAP SCRIPT
-var map;
-   	//used to name the markers that will appear when user clicks
-    var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    var labelIndex = 0;
-
-    //creates my center on the map
-    myCenter = new google.maps.LatLng(40.6, -74);
-
-    //initializes google map
-    function initialize() {
+     }(document, 'script', 'facebook-jssdk'));
+  </script>
+  	<div id="jumbotron">
+  		<h1>HEADER</H1>
+  	</div>
+  	<div id="container">
+    	<div id="map"></div>
+	</div>
+	<div id="footer">
+		<h2>FOOTER</h2>
+	</div>
+    <script>
+      var map;
+      //used to name the markers that will appear when user clicks
+      var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      var labelIndex = 0;
+      function initMap() {
       	var brooklyn = {lat: +40.6, lng: -74},
-        var map = new google.maps.Map(document.getElementById('googleMap'), {
+        map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: +40.663, lng: -73.982},
           zoom: 14
         });
@@ -145,3 +169,8 @@ var map;
                               'Error: Your browser doesn\'t support geolocation.');
       }
   }
+    
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaNIL3WrVXoIxK_jN1LoFluEYKKY8-qzw&signed_in=true&callback=initMap" async defer></script>
+  </body>
+</html>
