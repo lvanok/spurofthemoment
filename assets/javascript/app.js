@@ -86,7 +86,7 @@ var pos = "";
 	          	function(response) {
 	              console.log(this);
           		},
-          	);
+          	)
          };
 // //FACEBOOK API to get all facebook likes from user that logged in
 // $('.clickButton').on('click', function(){
