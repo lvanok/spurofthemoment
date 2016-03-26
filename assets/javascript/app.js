@@ -85,7 +85,7 @@ $(".clickButton").on('click', function(){
 	  	'GET',
 	  	{"fields":"music{genre,artists_we_like,name,global_brand_page_name,name_with_location_descriptor,record_label,picture{url}}"},
 	  	function(response) {
-	      console.log(response);
+	      console.log("fields");
 	  	}
 	);
 });
