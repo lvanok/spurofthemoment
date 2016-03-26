@@ -1,1 +1,1 @@
-<?php include_once("bandsintownAPI_test.html"); ?>
+<?php include_once("bandsintownAPI_jsonp_test.html"); ?>
