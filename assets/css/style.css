@@ -17,6 +17,6 @@ html, body {
 	text-align: center;
 }
 
-.u_0_0 {
-	align-content: center;
+#fb-login-button {
+	float: right;
 }
