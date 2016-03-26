@@ -1,15 +1,7 @@
 var userData = new Firebase('https://spurofthemoment.firebaseio.com/');
 
-// //FACEBOOK API
-FB.api(
-  '/me',
-  'GET',
-  {"fields":"music{genre,artists_we_like,name,global_brand_page_name,name_with_location_descriptor,record_label,picture{url}}"},
-  function(response) {
-      console.log(response);
-  }
-);
-// FACEBOOK 
+
+// FACEBOOK LOGIN API
 // This is called with the results from from FB.getLoginStatus().
   function statusChangeCallback(response) {
     console.log('statusChangeCallback');
@@ -86,8 +78,16 @@ FB.api(
                'Thanks for logging in, ' + response.name + '!';
            });
          };
-
-//MAP SCRIPT
+// //FACEBOOK API to get all facebook likes from user that logged in
+FB.api(
+  '/me',
+  'GET',
+  {"fields":"music{genre,artists_we_like,name,global_brand_page_name,name_with_location_descriptor,record_label,picture{url}}"},
+  function(response) {
+      console.log(response);
+  }
+);
+//GOOGLE MAPS SCRIPT
 var map;
    	//used to name the markers that will appear when user clicks
     var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
