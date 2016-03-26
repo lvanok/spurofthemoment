@@ -13,4 +13,6 @@ html, body {
   margin-bottom: 5%;
 }
 
-#jumbotron
+#jumbotron{
+	text-align: center;
+}
