@@ -13,10 +13,7 @@ html, body {
   margin-bottom: 5%;
 }
 
-#jumbotron {
+#jumbotron, div {
 	text-align: center;
-}
-
-#fb-login-button {
-	float: right;
+	align-content: center;
 }
