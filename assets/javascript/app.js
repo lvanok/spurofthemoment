@@ -88,7 +88,7 @@ $(".clickButton").on('click', function(){
 	      console.log(response);
 	  	}
 	);
-};
+});
 //GOOGLE MAPS SCRIPT
 var map;
    	//used to name the markers that will appear when user clicks
