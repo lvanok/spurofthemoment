@@ -79,7 +79,7 @@ var userData = new Firebase('https://spurofthemoment.firebaseio.com/');
            });
          };
 // //FACEBOOK API to get all facebook likes from user that logged in
-function getUserInfo(){
+$(".clickButton).on('click', function(){
 	FB.api(
 	  	'/me',
 	  	'GET',
