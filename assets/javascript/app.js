@@ -1,14 +1,14 @@
 var userData = new Firebase('https://spurofthemoment.firebaseio.com/');
 
 // //FACEBOOK API
-// FB.api(
-//  '/me/music',
-//  'GET',
-//  {"fields":"id,name,genre","limit":"999999"},
-//  function(response) {
-//      // Insert your code here
-//  }
-// );
+FB.api(
+  '/me',
+  'GET',
+  {"fields":"music{genre,artists_we_like,name,global_brand_page_name,name_with_location_descriptor,record_label,picture{url}}"},
+  function(response) {
+      console.log(response);
+  }
+);
 // FACEBOOK 
 // This is called with the results from from FB.getLoginStatus().
   function statusChangeCallback(response) {
