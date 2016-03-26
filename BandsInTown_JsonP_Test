@@ -1,0 +1,21 @@
+
+
+
+$.ajax({
+    url: "http://api.bandsintown.com/artists/tycho/events/search.json?api_version=2.0&app_id=RUCB&location=New+York,NY&radius=5",
+
+    jsonp: "callback",
+
+    dataType: "jsonp",
+
+    data: {
+        q: "id, title",
+        format: "json"
+    }
+
+
+
+        success: function( response ) {
+        console.log( response ); // server response
+    }
+});
