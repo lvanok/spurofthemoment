@@ -20,10 +20,16 @@
 	<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
 
 	<!-- Facebook source link -->
+  <script id="facebook-jssdk" src="https://connect.facebook.net/en_US/all.js"></script>
 
 </head>
 <body>
+
 <!-- FACEBOOK SCRIPT - needs to be in the HTML and not the javascript DON'T EDIT-->
+
+
+<!-- <div id="fb-root"></div>
+
 <script>
  window.fbAsyncInit = function() {
    FB.init({
@@ -33,15 +39,14 @@
    });
  };
 
- (function(d, s, id){
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) {return;}
-    js = d.createElement(s); js.id = id;
-    js.src = "https://connect.facebook.net/en_US/sdk.js";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-</script>
-
+ <script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=1729912430587543";
+  fjs.parentNode.insertBefore(js, fjs);
+ }(document, 'script', 'facebook-jssdk'));</script>
+ -->
 <!-- REST OF HTML -->
   	<div class="jumbotron">
   		<div class="container">
@@ -56,9 +61,14 @@
   			</h1>
   			<p class="text-center"> information about app</p>
   			<div> button for facebook log in </div>
-  			<!-- FACEBOOK LOG IN BUTTON -->
-  			<div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="false"></div>
-  		</div>
+  			
+        <!-- FACEBOOK LOG IN BUTTON -->
+        <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+        </fb:login-button>
+
+        <div id="status">
+        </div>
+        <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="true"></div>
   	</div>
 
   	<div class="container">
