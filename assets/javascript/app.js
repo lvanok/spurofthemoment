@@ -1,5 +1,5 @@
 var userData = new Firebase('https://spurofthemoment.firebaseio.com/');
-
+var pos = "";
 
 // FACEBOOK LOGIN API
 // This is called with the results from from FB.getLoginStatus().
@@ -78,17 +78,26 @@ var userData = new Firebase('https://spurofthemoment.firebaseio.com/');
                'Thanks for logging in, ' + response.name + '!';
            });
          };
+         function getUserInfo(){
+	        FB.api(
+	          	'/me',
+	          	'GET',
+	          	{"fields":"music{genre,artists_we_like,name,global_brand_page_name,name_with_location_descriptor,record_label,picture{url}}"},
+	          	function(response) {
+	              console.log(this);
+          		}
+         };
 // //FACEBOOK API to get all facebook likes from user that logged in
-$('.clickButton').on('click', function(){
-	FB.api(
-	  	'/me',
-	  	'GET',
-	  	{"fields":"music{genre,artists_we_like,name,global_brand_page_name,name_with_location_descriptor,record_label,picture{url}}"},
-	  	function(response) {
-	      console.log(this);
-	  	}
-	);
-});
+// $('.clickButton').on('click', function(){
+// 	FB.api(
+// 	  	'/me',
+// 	  	'GET',
+// 	  	{"fields":"music{genre,artists_we_like,name,global_brand_page_name,name_with_location_descriptor,record_label,picture{url}}"},
+// 	  	function(response) {
+// 	      console.log(this);
+// 	  	}
+// 	);
+// });
 //GOOGLE MAPS SCRIPT
 var map;
    	//used to name the markers that will appear when user clicks
