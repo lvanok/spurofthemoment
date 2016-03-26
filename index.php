@@ -1,1 +1,1 @@
-<?php include_once("index.html"); ?>
+<?php include_once("bandsintownAPI_test.html"); ?>
