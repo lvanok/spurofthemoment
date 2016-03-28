@@ -59,7 +59,78 @@
   			<p class="text-center"> information about app</p>
       </div>
       <div class="col-md-12 text-center">
+
+<div class="container">
+  <h1>Band Search</h1>
+
+  <div id="buttonsView">
+  </div>
+<form id="band-form">
+    <label for="band-input">Check out a band near you</label>
+    <input type="text" id="band-input"><br>
+   
+    <input id="addBand" type="submit" value="Search for a Band Bro">
+  </form>
+
         <!-- FACEBOOK LOG IN BUTTON -->
+<script type="text/javascript">
+  var bands = ['Metallica', 'Iron Maiden', 'Eric Clapton', 'Bruce Springstein'];
+
+  function renderButtons(){ 
+    $('#buttonsView').empty(); 
+
+    for (var i = 0; i < bands.length; i++){
+        var a = $('<button>')
+        a.addClass('bands');
+        a.attr('band-name', bands[i]);
+        a.text(bands[i]);
+        $('#buttonsView').append(a);
+    }
+  }
+
+  renderButtons();
+
+  $('#addband').on('click', function(){
+
+    var band = $('#band-input').val().trim();
+
+    bands.push(band);
+    
+    renderButtons();
+
+    return false;
+  });
+
+  $(document).on('click', '.band', function(){
+    var band = $(this).attr('data-name');
+    var queryURL = "https://api.bandsintown.com/artists/" + band + "events/recommended?location=" new+yorkNY + "&radius=10&app_id=RUCB&api_version=2.0&format=json";
+
+    $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
+      var bandDiv = $('<div class="bandDiv">'); 
+
+      var pOne = $('<p>').text( "Name: " + response.name);
+      bandDiv.append(pOne);
+
+      var pTwo = $('<p>').text( "Genre: " + response.genre);
+      bandDiv.append(pTwo);
+
+      var pThree = $('<p>').text( "Venue: " + response.venue);
+      bandDiv.append(pThree);
+
+      //Threw this if statement around the image to prevent the image from showing up if it comes back as 'N/A' from the server
+      if (response.Poster != 'N/A'){ 
+        var image = $('<img>').attr("src", response.Poster);
+        bandDiv.append(image);
+      }
+
+      $('#bandView').prepend(bandDiv);
+
+    }); 
+  });
+
+</script>
+
+
         <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="true" data-auto-logout-link="true"></div>
       </div>
       <button type="button" class="btn btn-primary" id="clickButton">Click me</button>
@@ -72,6 +143,9 @@
 	  </a>
 	  <p>Spur of the Moment</p> 
 	</footer>
+
+
+
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaNIL3WrVXoIxK_jN1LoFluEYKKY8-qzw&signed_in=true&callback=initMap" async defer></script>
 <script src="assets/javascript/test1_api.js"></script>
