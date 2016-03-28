@@ -3,7 +3,7 @@ var pos = "";
 
 // FACEBOOK LOGIN API
 // This is called with the results from from FB.getLoginStatus().
-  function statusChangeCallback(response) {
+function statusChangeCallback(response) {
     console.log('statusChangeCallback');
     console.log(response);
     // The response object is returned with a status field that lets the
@@ -23,26 +23,26 @@ var pos = "";
          // they are logged into this app or not.
          document.getElementById('status').innerHTML = 'Please log ' +
            'into Facebook.';
-       }
-     }
+    }
+};
 
      // This function is called when someone finishes with the Login
      // Button.  See the onlogin handler attached to it in the sample
      // code below.
-     function checkLoginState() {
-       FB.getLoginStatus(function(response) {
-         statusChangeCallback(response);
-       });
-     }
+    function checkLoginState() {
+       	FB.getLoginStatus(function(response) {
+         	statusChangeCallback(response);
+       	});
+    };
 
-     window.fbAsyncInit = function() {
+window.fbAsyncInit = function() {
      FB.init({
        appId      : '1729912430587543',
        cookie     : true,  // enable cookies to allow the server to access 
                            // the session
        xfbml      : true,  // parse social plugins on this page
        version    : 'v2.5' // use graph api version 2.5
-     });
+    });
      // Now that we've initialized the JavaScript SDK, we call 
        // FB.getLoginStatus().  This function gets the state of the
        // person visiting this page and can return one of three states to
@@ -55,51 +55,42 @@ var pos = "";
        //
        // These three cases are handled in the callback function.
 
-       FB.getLoginStatus(function(response) {
-         statusChangeCallback(response);
-       });
+    FB.getLoginStatus(function(response) {
+  	    statusChangeCallback(response);
+    });
+};
 
- 
 
        // Load the SDK asynchronously
-       (function(d, s, id) {
-         var js, fjs = d.getElementsByTagName(s)[0];
-         if (d.getElementById(id)) return;
-         js = d.createElement(s); js.id = id;
-         js.src = "//connect.facebook.net/en_US/sdk.js";
-         fjs.parentNode.insertBefore(js, fjs);
-       }(document, 'script', 'facebook-jssdk'));
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
        // Here we run a very simple test of the Graph API after login is
-         // successful.  See statusChangeCallback() for when this call is made.
-         function testAPI() {
-           console.log('Welcome!  Fetching your information.... ');
-           FB.api('/me', function(response) {
-             console.log('Successful login for: ' + response.name);
-             document.getElementById('status').innerHTML =
-               'Thanks for logging in, ' + response.name + '!';
-           });
-         };
-         function getUserInfo(){
-	        FB.api(
-	          	'/me',
-	          	'GET',
-	          	{"fields":"music{genre,artists_we_like,name, picture{url}}"},
-	          	function(response) {
-	              console.log(fields.music.genre + fields.music.name + fields.music.artists_we_like + fields.music.picture);
-          		}
-          	);
-         };
-// //FACEBOOK API to get all facebook likes from user that logged in
-// $('.clickButton').on('click', function(){
-// 	FB.api(
-// 	  	'/me',
-// 	  	'GET',
-// 	  	{"fields":"music{genre,artists_we_like,name,global_brand_page_name,name_with_location_descriptor,record_label,picture{url}}"},
-// 	  	function(response) {
-// 	      console.log(this);
-// 	  	}
-// 	);
-// });
+        // successful.  See statusChangeCallback() for when this call is made.
+    function testAPI() {
+        console.log('Welcome!  Fetching your information.... ');
+        FB.api('/me', function(response) {
+            console.log('Successful login for: ' + response.name);
+            document.getElementById('status').innerHTML =
+            'Thanks for logging in, ' + response.name + '!';
+        });
+    };
+    function getUserInfo(){
+	    FB.api(
+	        '/me',
+	        'GET',
+	        {"fields":"music{genre,artists_we_like,name, picture{url}}"},
+	        function(response) {
+	            console.log(fields.music.genre + fields.music.name + fields.music.artists_we_like + fields.music.picture);
+          	}
+        );
+    };
+
+
 //GOOGLE MAPS SCRIPT
 var map;
    	//used to name the markers that will appear when user clicks
