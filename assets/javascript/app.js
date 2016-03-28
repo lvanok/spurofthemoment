@@ -77,6 +77,9 @@ function testAPI() {
     });
 };
 function getUserInfo(){
+	FB.login(function(response) {
+	  // handle the response
+	}, {scope: 'user_likes, user_actions.music'});
 	FB.api(
 	    '/me',
 	    'GET',
