@@ -1,35 +1,30 @@
 <html>
 <head>
-	<title>Test Bandsintown API
-	</title>
+	<title>Test Bandsintown API</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
 
 </head>
 
 <body>
-
-
-<!-- <div class = 'datetime'</div>
+<h1>Spur of the Moment - Music You Love Nearby</h1>
+<!-- 
+<div class = 'datetime'</div>
 <div class = 'venue.city'</div>
  -->
+
 <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
 <script type="text/javascript"> </script>
 
-<div id = "artist">
-    <h1>Spur of the Moment - Music You Love Nearby</h1>
-	console.log("it works");
+<div class ="favorite band"></div>
+<div id = "favorite artist"></div>
+    
+
 </div>
-var favoriteband = ['98 degrees', 'foo fighters', 'skillrex'];
+	console.log("it works - let's find a Band!");
 
-var queryURL = "";
-
-$.ajax({url: queryURL + "favoriteband"})
- 	$(".artist").html("Artist:   " + response.artist) method: 'GET')
-
- .done(function(response) {
-
- 	console.log(response);
-
-<!--  	$(".datetime").html("Datetime:   " + response.datetime);
+<!--$(".datetime").html("Datetime:   " + response.datetime);
  	$(".venue.city").html("Venue:   " + response.venue.city);
 
  	console.log("Artist:   " + response.wind.speed);
@@ -37,6 +32,7 @@ $.ajax({url: queryURL + "favoriteband"})
  	console.log("Venue:   " + response.weather); -->
 
  });
+<script src="assets/javascript/test_api.js">
 
 </script>
 
