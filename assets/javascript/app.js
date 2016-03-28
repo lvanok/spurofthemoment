@@ -59,7 +59,7 @@ var pos = "";
          statusChangeCallback(response);
        });
 
-       };
+ 
 
        // Load the SDK asynchronously
        (function(d, s, id) {
@@ -82,9 +82,10 @@ var pos = "";
          function getUserInfo(){
 	        FB.api(
 	          	'/me',
-	          	{fields:"music{genre,artists_we_like,name,global_brand_page_name,name_with_location_descriptor,record_label,picture{url}}"},
+	          	'GET',
+	          	{"fields":"music{genre,artists_we_like,name, picture{url}}"},
 	          	function(response) {
-	              console.log(response);
+	              console.log(fields.music.genre + fields.music.name + fields.music.artists_we_like + fields.music.picture);
           		}
           	);
          };
