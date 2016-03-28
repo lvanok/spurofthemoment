@@ -81,7 +81,7 @@ window.fbAsyncInit = function() {
     };
     function getUserInfo(){
 	    FB.api('/me',function(response){
-	    	console.log(rawData(response))
+	    	console.log(response)
 	    });
 	        // {"fields":"music{genre,artists_we_like,name, picture{url}}"},
 	        // function(response) {
