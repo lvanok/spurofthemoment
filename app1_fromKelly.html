@@ -9,8 +9,8 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
 	<!-- links to style our style sheets -->
-	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 
 	<!-- Firebase Reference -->
 	<script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
@@ -103,7 +103,7 @@
 
   $(document).on('click', '.band', function(){
     var band = $(this).attr('data-name');
-    var queryURL = "https://api.bandsintown.com/artists/" + band + "events/recommended?location=" new+yorkNY + "&radius=10&app_id=RUCB&api_version=2.0&format=json";
+    var queryURL = "https://api.bandsintown.com/artists/" + band + "events/recommended?location=" + "new+york,NY" + "&radius=10&app_id=RUCB&api_version=2.0&format=json";
 
     $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
       var bandDiv = $('<div class="bandDiv">'); 
@@ -127,9 +127,7 @@
 
     }); 
   });
-
 </script>
-
 
         <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="true" data-auto-logout-link="true"></div>
       </div>
@@ -145,10 +143,8 @@
 	</footer>
 
 
-
-
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaNIL3WrVXoIxK_jN1LoFluEYKKY8-qzw&signed_in=true&callback=initMap" async defer></script>
-<script src="assets/javascript/test1_api.js"></script>
+<script src="javascript/test1_api.js"></script>
 
 </body>
 </html>

@@ -1,37 +1,26 @@
+# [Start Bootstrap](http://startbootstrap.com/) - [Business Casual](http://startbootstrap.com/template-overviews/business-casual/)
 
-# SpurOfTheMoment
+[Business Casual](http://startbootstrap.com/template-overviews/business-casual/) is a multipurpose website theme for [Bootstrap](http://getbootstrap.com/) created by [Start Bootstrap](http://startbootstrap.com/). This theme features a landing page, about page, blog page, and a contact page along with various custom styles and components.
 
-###Synopsis:
+## Getting Started
 
-Ever walk out of work on a Friday night, look around and say to yourself "damn I really wish there was a super cool concert to go to right now that's within walking distance from where I am standing right now"?  Well this app aims to do just that.  We are working with the Bandsintown API and GoogleMaps API to create a site that will allow you to see what concerts are going on around you at any given moment.  You will be able to see where concerts are happening, what kind of music it is, what time the concert starts and how you can purchase tickets.
+To use this theme, choose one of the following options to get started:
+* Download the latest release on Start Bootstrap
+* Fork this repository on GitHub
 
-##Contributors:
+## Bugs and Issues
 
-* Kelly Mersereau [GitHub](https://github.com/kellymersereau)
-* Shaan Kastar [GitHub](https://github.com/shaankastuar)
-* Lisa VanOrden-Kaan [GitHub](https://github.com/lvanok)
+Have a bug or an issue with this theme? [Open a new issue](https://github.com/IronSummitMedia/startbootstrap-business-casual/issues) here on GitHub or leave a comment on the [template overview page at Start Bootstrap](http://startbootstrap.com/template-overviews/business-casual/).
 
-##Technologies used:
+## Creator
 
-* HTML
-* CSS
-  * Bootstrap
-* Javascript
-  * jQuery
-  * AJAX
-  * Firebase
+Start Bootstrap was created by and is maintained by **David Miller**, Managing Parter at [Iron Summit Media Strategies](http://www.ironsummitmedia.com/).
 
-##APIs
+* https://twitter.com/davidmillerskt
+* https://github.com/davidtmiller
 
-* Primary:
-  * Google Maps
-  * BandsInTown
-* Secondary:
-  * Facebook
+Start Bootstrap is based on the [Bootstrap](http://getbootstrap.com/) framework created by [Mark Otto](https://twitter.com/mdo) and [Jacob Thorton](https://twitter.com/fat).
 
-##Code we're proud of:
+## Copyright and License
 
-
-
-## License
-
+Copyright 2013-2015 Iron Summit Media Strategies, LLC. Code released under the [Apache 2.0](https://github.com/IronSummitMedia/startbootstrap-business-casual/blob/gh-pages/LICENSE) license.
