@@ -1,16 +1,13 @@
 var pos = "";
-var bands = [];
-var venueLatLon = [];
-var venueNames = [];
 var test = '';
 
-$('#submitButton').on('click', function(){
-  function createArtistList(){
-    var artist = $('<li>');
-        i++;
-        artist.attr('data-num', [i])
-  }
-})
+// $('#submitButton').on('click', function(){
+//   function createArtistList(){
+//     var artist = $('<li>');
+//         i++;
+//         artist.attr('data-num', [i])
+//   }
+// })
 
 // FACEBOOK LOGIN API
 // This is called with the results from from FB.getLoginStatus().
@@ -99,7 +96,7 @@ $('#submitButton').on('click', function(){
   myCenter = new google.maps.LatLng(40.6, -74);
 
   //initializes google map
-  function initMap() {
+  function initialize() {
     var brooklyn = {lat: +40.6, lng: -74},
     map = new google.maps.Map(document.getElementById('googleMap'), {
       center: {lat: +40.663, lng: -73.982},
@@ -198,9 +195,14 @@ $('#submitButton').on('click', function(){
 
 // BANDS IN TOWN API
 
+var bands = [];
+var venueLatLon = [];
+var venueNames = [];
+var bitResponse = '';
+
 $.ajax({
   url: "https://api.bandsintown.com/artists/metallica/events/recommended?location=new+york,NY&radius=10&app_id=RUCB&api_version=2.0&format=json",
-      
+
   jsonp: "callback",
 
   dataType: "jsonp",
@@ -210,18 +212,28 @@ $.ajax({
     format: "json"
   },
 
-  success: function( response ) {
-    console.log( response ); 
-    test = response;
-  }
-
-  for(var i = 0; i < test.length; i++){
-    venueNames.push(test[i].venue.name);
-    var midstep = test[i].artist[j]
-    for(var j = 0; j < test[i].artist[j].length; j++ ){
-      bands.push(midstep.name)
-    }
-    
-  };
+  success: function(response) {
+    console.log(response); 
+    bitResponse = response;
+  },
 
 });
+function addToArray(){  
+  for(var i = 0; i < bitResponse.length; i++){
+    // pushes the name and lat long of the venues into an array stored in a global variable
+    venueNames.push(bitResponse[i].venue.name);
+    venueLatLon.push("lat:"+bitResponse[i].venue.latitude + " lon:" + bitResponse[i].venue.longitude);
+    // second for loop for the artist information
+    for(var j = 0; j < bitResponse[i].artist.length; j++ ){
+      // nate recommended this and helped me through it, but i am unsure of the use now that i have gotten further along, so I am commenting it out.             
+      midstep = bitResponse[i].artists[j];
+      bands.push(midstep.name);
+    };
+  };
+};
+addToArray();
+
+// Script to Activate the Carousel 
+  $('.carousel').carousel({
+    interval: 5000 //changes the speed
+  });
