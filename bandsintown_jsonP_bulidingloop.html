@@ -36,40 +36,43 @@
 
 
                 success: function( response ) {
+                  debugger;
+                  bitResponse = response;
                 console.log(response); 
-                bitResponse = response;
+                
+                      function addToArray(){  
+                        for(var i = 0; i < bitResponse.length; i++){
+
+                            // pushes the name and lat long of the venues into an array stored in a global variable
+
+                           venueNames.push(bitResponse[i].venue.name);
+
+                           midstepLocations.push(bitResponse[i].venue);
+
+                           venueLatLon.push("lat:"+bitResponse[i].venue.latitude + " lon:" + bitResponse[i].venue.longitude);
+
+                           // second for loop for the artist information
+
+                           for(var j = 0; j < bitResponse[i].artists.length; j++ ){
+
+                            // after spending time trying to get the names to push into array, got it to work, but decided to push the entire artist object into an array for the global variable called "midstep"
+
+                            midstepArtist.push(bitResponse[i].artists[j]);
+
+                           bandNames.push(bitResponse[i].artists[j].name);
+
+                           };
+                    };
+                };
             }
 
         });
 
-              function addToArray(){  
-                for(var i = 0; i < bitResponse.length; i++){
-
-                    // pushes the name and lat long of the venues into an array stored in a global variable
-
-                   venueNames.push(bitResponse[i].venue.name);
-
-                   midstepLocations.push(bitResponse[i].venue);
-
-                   venueLatLon.push("lat:"+bitResponse[i].venue.latitude + " lon:" + bitResponse[i].venue.longitude);
-
-                   // second for loop for the artist information
-
-                   for(var j = 0; j < bitResponse[i].artists.length; j++ ){
-
-                    // after spending time trying to get the names to push into array, got it to work, but decided to push the entire artist object into an array for the global variable called "midstep"
-
-                    midstepArtist.push(bitResponse[i].artists[j]);
-
-                   bandNames.push(bitResponse[i].artists[j].name);
-
-                   };
-            };
-        };
+              
 
 
         // THIS CODE IS NOT RUNNING AND NOT RUNNING addToArray AUTOMATICALLY
-        addToArray();
+        // addToArray();
 
 
        //      trying to make this function run anonymously on document.done
