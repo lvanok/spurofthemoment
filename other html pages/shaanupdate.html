@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">    
+
+    <title>BiT json P test  </title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified CSS & JS -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+
+
+      
+</head>
+    <body>
+    this is a test for bandsintown API using jsonP.
+
+    <form action="" method="POST" class="form-inline" role="form">
+        <div class="form-group">
+            <label class="sr-only" for="">label</label>
+            <input type="text" class="form-control" id="userInput" placeholder="Favorite Bands">
+        </div>
+        <button type="submit" class="btn btn-primary" id="submitButton">Submit</button>
+    </form>
+    
+
+      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <script>
+        var artist = "Frank Turner";
+        $.ajax({
+            url: "https://api.bandsintown.com/artists/" + artist + ".json?api_version=2.0&app_id=RUCB",
+
+            jsonp: "callback",
+
+            dataType: "jsonp",
+
+            data: {
+                q: "name",
+                format: "json"
+            },
+
+
+
+                success: function( response ) {
+                console.log( response ); 
+            }
+        });
+        </script>
+    </body>
+</html>
+
