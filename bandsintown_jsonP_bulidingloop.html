@@ -1,21 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>BiT json P test  </title>
+    <title>4loop test </title>
 </head>
     <body>
     this is a test for bandsintown API using jsonP.
         <script src='https://code.jquery.com/jquery-2.1.3.min.js'></script>
         <script type="text/javascript">
 
-        var bands = []
+        var bandNames = []
         var venueLatLon = []
         var venueNames = []
 
 
-        var test = ''
+        var midstepArtist = []
+        var midstepLocations =[]
+
+        var mapLongLat = []
+
+
+        var bitResponse = ''
+
         $.ajax({
-            url: "https://api.bandsintown.com/artists/metallica/events/recommended?location=new+york,NY&radius=10&app_id=RUCB&api_version=2.0&format=json",
+            url: "https://api.bandsintown.com/artists/nas/events/recommended?location=new+york,NY&radius=10&app_id=RUCB&api_version=2.0&format=json",
 
             jsonp: "callback",
 
@@ -29,20 +36,46 @@
 
 
                 success: function( response ) {
-                console.log( response ); 
-                test = response;
+                console.log(response); 
+                bitResponse = response;
             }
 
-                for(var i = 0; i < test.length; i++){
-                   venueNames.push(test[i].venue.name);
-                   var midstep = test[i].artist[j]
-                   for(var j = 0; j < test[i].artist[j].length; j++ ){
-                    bands.push(midstep.name)
-
-                   }
-            };
-
         });
+
+              function addToArray(){  
+                for(var i = 0; i < bitResponse.length; i++){
+
+                    // pushes the name and lat long of the venues into an array stored in a global variable
+
+                   venueNames.push(bitResponse[i].venue.name);
+
+                   midstepLocations.push(bitResponse[i].venue);
+
+                   venueLatLon.push("lat:"+bitResponse[i].venue.latitude + " lon:" + bitResponse[i].venue.longitude);
+
+                   // second for loop for the artist information
+
+                   for(var j = 0; j < bitResponse[i].artists.length; j++ ){
+
+                    // after spending time trying to get the names to push into array, got it to work, but decided to push the entire artist object into an array for the global variable called "midstep"
+
+                    midstepArtist.push(bitResponse[i].artists[j]);
+
+                   bandNames.push(bitResponse[i].artists[j].name);
+
+                   };
+            };
+        };
+
+
+        // THIS CODE IS NOT RUNNING AND NOT RUNNING addToArray AUTOMATICALLY
+        addToArray();
+
+
+       //      trying to make this function run anonymously on document.done
+       // // $(document).readyaddToArray();
+
+       
 
         // http://api.bandsintown.com/artists/Lil%20Wayne?format=json&artist_id=fbid_6885814958&api_version=2.0&app_id=YOUR_APP_ID
         </script>

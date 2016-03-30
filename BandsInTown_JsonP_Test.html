@@ -13,7 +13,7 @@
         var venueNames = []
 
 
-        var test = ''
+        var bitResponse = ''
         $.ajax({
             url: "https://api.bandsintown.com/artists/metallica/events/recommended?location=new+york,NY&radius=10&app_id=RUCB&api_version=2.0&format=json",
 
@@ -30,12 +30,12 @@
 
                 success: function( response ) {
                 console.log( response ); 
-                test = response;
+                test = bitresponse;
             }
 
-                for(var i = 0; i < test.length; i++){
-                   bands.push(test[i].artists[i].name)
-            };
+            //     for(var i = 0; i < test.length; i++){
+            //        bands.push(test[i].artists[i].name)
+            // };
 
         });
 
