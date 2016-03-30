@@ -1,4 +1,8 @@
 var pos = "";
+var bands = [];
+var venueLatLon = [];
+var venueNames = [];
+var test = '';
 
 $('#submitButton').on('click', function(){
   function createArtistList(){
@@ -191,3 +195,33 @@ $('#submitButton').on('click', function(){
         'Error: Your browser doesn\'t support geolocation.');
     }
   }
+
+// BANDS IN TOWN API
+
+$.ajax({
+  url: "https://api.bandsintown.com/artists/metallica/events/recommended?location=new+york,NY&radius=10&app_id=RUCB&api_version=2.0&format=json",
+      
+  jsonp: "callback",
+
+  dataType: "jsonp",
+
+  data: {
+    q: "name",
+    format: "json"
+  },
+
+  success: function( response ) {
+    console.log( response ); 
+    test = response;
+  }
+
+  for(var i = 0; i < test.length; i++){
+    venueNames.push(test[i].venue.name);
+    var midstep = test[i].artist[j]
+    for(var j = 0; j < test[i].artist[j].length; j++ ){
+      bands.push(midstep.name)
+    }
+    
+  };
+
+});
