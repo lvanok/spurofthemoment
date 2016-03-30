@@ -1,0 +1,19 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+#googleMap {
+  height: 400px;
+  width: 100%;
+}
+#container {
+  height: 90%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+#jumbotron, div {
+	text-align: center;
+	align-content: center;
+}
