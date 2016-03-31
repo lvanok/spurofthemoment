@@ -53,6 +53,46 @@ $('#submitButton').on('click', function(){
       });
   };
 
+        var bandNames = []
+        var venueLatLon = []
+        var venueNames = []
+        var midstepArtist = []
+        var midstepLocations =[]
+        var mapLongLat = []
+        var bitResponse = ''
+        $.ajax({
+            url: "https://api.bandsintown.com/artists/nas/events/recommended?location=new+york,NY&radius=10&app_id=RUCB&api_version=2.0&format=json",
+            jsonp: "callback",
+            dataType: "jsonp",
+            data: {
+                q: "name",
+                format: "json"
+            },
+                success: function( response ) {
+
+//                console.log(response); 
+                bitResponse = response;
+                addToArray();
+
+            }
+        });
+              function addToArray(){  
+//                debugger;
+                for(var i = 0; i < bitResponse.length; i++){
+                    // pushes the name and lat long of the venues into an array stored in a global variable
+                   venueNames.push(bitResponse[i].venue.name);
+                   midstepLocations.push(bitResponse[i].venue);
+                   venueLatLon.push("lat:"+bitResponse[i].venue.latitude + " lon:" + bitResponse[i].venue.longitude);
+                   // second for loop for the artist information
+                   for(var j = 0; j < bitResponse[i].artists.length; j++ ){
+                    // after spending time trying to get the names to push into array, got it to work, but decided to push the entire artist object into an array for the global variable called "midstep"
+                    midstepArtist.push(bitResponse[i].artists[j]);
+                   bandNames.push(bitResponse[i].artists[j].name);
+                   };
+                                 //  debugger;
+
+            };
+        };
 
   // Load the SDK asynchronously
   (function(d, s, id) {
@@ -191,4 +231,4 @@ $('#submitButton').on('click', function(){
         'Error: Your browser doesn\'t support geolocation.');
     }
   }
-Status API Training Shop Blog About
+// Status API Training Shop Blog About
