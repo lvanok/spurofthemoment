@@ -100,7 +100,7 @@ $('#submitButton').on('click', function(){
     var brooklyn = {lat: +40.6, lng: -74},
     map = new google.maps.Map(document.getElementById('googleMap'), {
       center: {lat: +40.663, lng: -73.982},
-        zoom: 14
+        zoom: 10
     });
     //info window that shows current location
     var infoWindow = new google.maps.InfoWindow({map: map});
@@ -124,16 +124,7 @@ $('#submitButton').on('click', function(){
       '</div>'+
       '<h1 id="firstHeading" class="firstHeading">Band Name or Header</h1>'+
       '<div id="bodyContent">'+
-      '<p><b>Content</b>, also <b>more content</b>, is a content ' +
-      'sandstone rock formation in the southern part of the '+
-      'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
-      'south west of the nearest large town, Alice Springs; 450&#160;km '+
-      '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
-      'features of the Uluru - Kata Tjuta National Park. Uluru is '+
-      'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
-      'Aboriginal people of the area. It has many springs, waterholes, '+
-      'rock caves and ancient paintings. Uluru is listed as a World '+
-      'Heritage Site.</p>'+
+      '<p><b>Content</b>, also <b>more content</b>, is a content '
       '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
       'https://en.wikipedia.org/w/index.php?title=Uluru</a> '+
       '(last visited June 22, 2009).</p>'+
@@ -159,12 +150,30 @@ $('#submitButton').on('click', function(){
     // Adds a marker to the map.
     function addMarker(location, map) {
       // Add the marker at the clicked location, and add the next-available label from the array of alphabetical characters.
-      var marker = new google.maps.Marker({
-        position: location,
-        label: labels[labelIndex++ % labels.length],
-        map: map
-      });
-    }
+    for (var i = 0; i < bitResponse.length; i++) {
+        var venueData = bitResponse[i].venue;
+        var showData = bitResponse[i];
+        var myLatlng = new google.maps.LatLng(venueData.latitude, venueData.longitude);
+        var marker = new google.maps.Marker({
+            position: myLatlng,
+            map: map,
+            label: bitResponse.title
+        });
+    
+    //Attach click event to the marker.
+    (function (marker, venueData) {
+        google.maps.event.addListener(marker, "click", function (e) {
+            //Wrap the content inside an HTML DIV in order to set height and width of InfoWindow.
+            infoWindow.setContent("<div style = 'width:200px;min-height:40px'>" +showData.title + "</div>");
+            infoWindow.open(map, marker);
+        });
+    })(marker, venueData);
+
+  }
+}
+
+
+
 
     // Try HTML5 geolocation.
     if (navigator.geolocation) {
