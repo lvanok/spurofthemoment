@@ -1,25 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta name="viewport" content="initial-scale=1.0">
-	<meta charset="utf-8">
-	<title>Spur of the Moment</title>
+  <meta name="viewport" content="initial-scale=1.0">
+  <meta charset="utf-8">
+  <title>Spur of the Moment</title>
 
-	<!-- Latest compiled and minified CSS // BOOTSTRAP -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <!-- Latest compiled and minified CSS // BOOTSTRAP -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
-	<!-- links to style our style sheets -->
-	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <!-- links to style our style sheets -->
+  <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
-	<!-- Latest compiled and minified CSS & JS -->
-	<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+  <!-- Latest compiled and minified CSS & JS -->
+  <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
 
-	<!-- Facebook source link -->
+  <!-- Facebook source link -->
   <script id="facebook-jssdk" src="https://connect.facebook.net/en_US/all.js"></script>
 <!-- Jquery data tables -->
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/t/bs-3.3.6/dt-1.10.11,b-1.1.2,b-colvis-1.1.2,fc-3.2.1,fh-3.1.1,r-2.0.2/datatables.css"/>
+  <!-- google maps API - moved to front -->
 
+
+
+<!-- google maps API - moved to front -->
+  <<!-- script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaNIL3WrVXoIxK_jN1LoFluEYKKY8-qzw&signed_in=true&callback=initMap" async defer></script>
+ -->
 </head>
 <body>
 
@@ -43,19 +49,19 @@
 
 
 <!-- REST OF HTML -->
-  	<div class="jumbotron">
-  		<div class="container">
-  			<h1 class="text-center">Spur of the Moment</h1>
-  			<p class="text-center">paragraph with app info </p>
-  		</div>
-  	</div>
+    <div class="jumbotron">
+      <div class="container">
+        <h1 class="text-center">Spur of the Moment</h1>
+        <p class="text-center">paragraph with app info </p>
+      </div>
+    </div>
 <!-- information about app -->
-  	<div class="container">
+    <div class="container">
       <div class="row">
-    		<div class="col-md-12">
-    			<h1 class="text-center">
-    			</h1>
-    			<p class="text-center"> information about app</p>
+        <div class="col-md-12">
+          <h1 class="text-center">
+          </h1>
+          <p class="text-center"> information about app</p>
         </div>
 <!-- FACEBOOK LOG IN BUTTON -->
         <div class="col-md-12 text-center">
@@ -77,24 +83,40 @@
           </form>
         </div>
       </div>
+      <div class="row">
+        <div class="col-md-8">
+          <div class="userList"></div>
+        </div>
+      </div>
     </div>
 
 <!-- Google map -->
-  	<div class="container">
-    	<div id="googleMap"></div>
+    <div class="container">
+      <div id="googleMap"></div>
     </div>
 
 <!-- LIST OF EVENTS TABLE -->
-<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-  <div class="panel panel-default">
+<div class="panel-group" id="accordion"
+class="addAll" role="tablist" aria-multiselectable="true">
+<!--   <div id="pDefault"> 
+    <div id="pHeading"> 
+      <div id="pTitle"> 
+        <div id="bLink"></div> 
+      </div>
+    </div>
+    <div id="tab">
+      <div id="pBody"> </div>
+    </div>
+  </div> -->
+  <!-- <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="headingOne">
       <h4 class="panel-title">
-        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
           Collapsible Group Item #1
         </a>
       </h4>
     </div>
-    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
       <div class="panel-body">
         lots of text that we can pull from the bands in town object and create these list items in the javascript
         <ul>
@@ -155,22 +177,22 @@
           <li>BUY TICKETS LINK</li>
           <li>GET DIRECTIONS LINK</li>
         </ul>
-      </div>
-    </div>
-  </div>
+      </div -->
+<!--     </div>
+  </div> -->
 </div>
 
 <!-- footer -->
-	<footer class="container-fluid text-center">
-	  <a href="#myPage" title="To Top">
-	    <span class="glyphicon glyphicon-music"></span>
-	  </a>
-	  <p>Spur of the Moment</p> 
-	</footer>
+  <footer class="container-fluid text-center">
+    <a href="#myPage" title="To Top">
+      <span class="glyphicon glyphicon-music"></span>
+    </a>
+    <p>Spur of the Moment</p> 
+  </footer>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaNIL3WrVXoIxK_jN1LoFluEYKKY8-qzw&signed_in=true&callback=initMap" async defer></script>
 <script type="text/javascript" src="https://cdn.datatables.net/t/bs-3.3.6/dt-1.10.11,b-1.1.2,b-colvis-1.1.2,fc-3.2.1,fh-3.1.1,r-2.0.2/datatables.js"></script>
 <script src="assets/javascript/app.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaNIL3WrVXoIxK_jN1LoFluEYKKY8-qzw&signed_in=true&callback=initMap" async defer></script>
 
 </body>
 </html>
