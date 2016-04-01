@@ -140,13 +140,13 @@
     function addMarker(location, map) {
       // Add the marker at the clicked location, and add the next-available label from the array of alphabetical characters.
       for (var i = 0; i < bitResponse.length; i++) {
-        var venueData = bitResponse[i].venue;
-        var showData = bitResponse[i];
-        var myLatlng = new google.maps.LatLng(venueData.latitude, venueData.longitude);
-        var marker = new google.maps.Marker({
+        venueData = bitResponse[i].venue;
+        showData = bitResponse[i];
+        myLatlng = new google.maps.LatLng(venueData.latitude, venueData.longitude);
+        marker = new google.maps.Marker({
           position: myLatlng,
           map: map,
-          label: bitResponse.title
+          label: bitResponse[i].title,
         });
       
       //Attach click event to the marker.
@@ -290,97 +290,24 @@ function createArtistList(){
 }
 
 //code to add information and create the table
-<<<<<<< HEAD
-var panelPrefix = 'panel';
-var panelId = '';
-var pHeadingPrefix = 'pheading';
-var pHeadingId = '';
-var pTitlePrefix = 'pTitle';
-var pTitleId = '';
-var buttonPrefix = 'button';
-var buttonId = '';
-var pCollapsePrefix = 'pcollapse';
-var pCollapseId = '';
-var pBodyPrefix = 'pbody';
-var pBodyId = '';
-=======
 var tablePrefix = 'table';
 var tableId = '';
 var labelPrefix = 'listItem';
 var labelId = '';
->>>>>>> 7029b18a4a20032a53bb1dba7f7244671c20579f
 
 function createTable(){
   for(var i=0; i < bitResponse.length; i++){
-    //this creates the id for the panel of the table
-    panelId = panelPrefix + i;
-    //this creates the id for the header of the table
-<<<<<<< HEAD
-    pHeadingId = pHeadingPrefix + i;
-    //this creates the id for the title of the table
-    pTitleId = pTitlePrefix +i;
-    //this creates the id for the panel button of the table
-    buttonId = buttonPrefix + i;
-    //this creates the id for the collapse panel of the table
-    pCollapseId = pCollapsePrefix +i;
-    //this creates the id for the panel body of the table
-    pBodyId = pBodyPrefix +i;
-
 
     //creates the panel for the table
-    var panelPanel = $('<div class="panel panel-default" id="'+panelId+'></div>');
-    //this creates the variable thead which is for the header of each table
-    var thead = $('<div id="' + pHeadingId + '" class="panel-heading"></div>');
-    //this creates the variable ptitle which is for the header of each table
-    var ptitle = $('<h4 class="panel-title" data-toggle="collapse" href="#'+pBodyId+'" id="'+pTitleId+'"></h4>');
-    //this creates the variable pbutton which is for the button of the title
-    // var pbutton = $('<a data-toggle="collapse" href="#'+buttonId+'"></a>');
-    //this sets the text of the button to the name pulled from the bands in town api object
-    $(ptitle).text(midstepArtists[i].name);
-
-  
-    //this creates the tcollapse variable which is the collapse div for the body
-    var tcollapse = $('<div id="#'+pCollapseId+'" class="panel-collapse collapse"></div>');
-    //this creates the tbody variable which is for the body of the panel
-    var tbody = $('<div id="#'+pBodyId+'" class="panel-body"></div>');
-
-    //this enters the artist info into the body
-    $(tbody).text(venueNames[i]);
-
-    //this appends all of the buttons to the HTML page
-    $(panelPanel).append(thead);
-    $(panelPanel).append(tcollapse);
-    $(thead).append(ptitle);
-    $(tcollapse).append(tbody);
-
-    $('#table').append(panelPanel);
-=======
     tableId = tablePrefix + i;
     //this creates the id for the body of the table
     bodyId = labelPrefix +i;
-    // //this creates the variable tableRow which is for the header of each table
-    // var tableRow = $('<div class="panel-heading" id="#'+tableId+'"></div>');
-    // //this sets the text of the header to the name pulled from the bands in town api object
-    // $(tableRow).text(bitResponse[i].title);
+
   
     main = $('<div class="panel panel-default"> <div class="panel-heading" id="#'+tableId+'">'+bitResponse[i].title+'</div><ul id="#'+bodyId+'" class="list-group"><li class="list-group-item"> '+bitResponse[i].artists[i].name+' </li> <li class="list-group-item"><a href="'+bitResponse[i].artists[i].website+'">'+bitResponse[i].artists[i].url+' </li></ul></div>');
     $('#table').append(main);
     
-    // var header = $('<div class="panel-heading" id="#'+tableId+'"> </div>');
-    // $(header).insertAfter(main);
-    
-    // var list = $('<ul id="#"'+bodyId+'">');
-    // $(list).insertAfter(header);
-    
-    // var listItems = $('<li> '+bitResponse[i].artists[i].name+' </li> <li><a href="'+bitResponse[i].artists[i].website+'">'+bitResponse[i].artists[i].url+' </li> ');
-    // $(listItems).insertAfter(list);
-    
-    // var listClose = $('</ul>');
-    // $(listClose).insertAfter(listItems);
-    
-    // var mainClose = $("</div>")
-    // $(mainClose).insertAfter(listClose);
->>>>>>> 7029b18a4a20032a53bb1dba7f7244671c20579f
+
   };
 
 }
