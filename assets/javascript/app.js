@@ -236,8 +236,9 @@ var mapLongLat
       },
 
       success: function( response ) {
-        console.log(response); 
+
         bitResponse = response;
+        console.log(bitResponse); 
         addToArray();
 
       },
