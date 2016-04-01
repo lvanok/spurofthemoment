@@ -239,7 +239,7 @@ var mapLongLat
         console.log(response); 
         bitResponse = response;
         addToArray();
-        createTable();
+
       },
     })
     return false;
@@ -270,6 +270,7 @@ var mapLongLat
            bands.push(bitResponse[i].artists[j].name);
 
            };
+        createTable();
     };
 };
 
