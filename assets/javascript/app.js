@@ -1,18 +1,3 @@
-var userInput = 
-
-$('#submitButton').on('click', function(){
-  userInput= $("#userInput").val().trim();
-  createArtistList();
-  $('#userInput').val("");
-  return false;
-})
-
-function createArtistList(){
-  var artist = $('<li>');
-      artist.addClass('user_input');
-      artist.text(userInput);
-      $(".userList").append(artist);
-}
 
 // FACEBOOK LOGIN API
 // This is called with the results from from FB.getLoginStatus().
@@ -226,28 +211,41 @@ var otherInfo = []
 // still working with this one, playing around with it, ignore it for now.
 var mapLongLat
 
-$.ajax({
-    url: "https://api.bandsintown.com/artists/nas/events/recommended?location=new+york,NY&radius=10&app_id=RUCB&api_version=2.0&format=json",
+  var userInput = ''
 
-    jsonp: "callback",
+  $('#submitButton').on('click', function(){
+    userInput= $("#userInput").val().trim();
+    createArtistList();
+    $('#userInput').val("");
 
-    dataType: "jsonp",
+    var queryURL = "https://api.bandsintown.com/artists/" + userInput + "/events/recommended?location=new+york,NY&radius=10&app_id=RUCB&api_version=2.0&format=json";
 
-    data: {
+    $.ajax({
+
+      userInput: userInput,
+   
+      url: queryURL,
+
+      jsonp: "callback",
+
+      // async: false,
+
+      dataType: "jsonp",
+
+      data: {
         q: "name",
         format: "json"
-    },
+      },
 
-
-
-        success: function( response ) {
+      success: function( response ) {
         console.log(response); 
         bitResponse = response;
         addToArray();
-        addToTable();
-    }
-
-});
+        createTable();
+      },
+    })
+    return false;
+  });
 
       function addToArray(){  
         for(var i = 0; i < bitResponse.length; i++){
@@ -276,6 +274,16 @@ $.ajax({
            };
     };
 };
+
+
+
+//code to make a list of user inputs just so i can see that it's working without console logging it
+function createArtistList(){
+  var artist = $('<div>');
+      artist.addClass('user_input');
+      artist.text(userInput);
+      $(".userList").append(artist);
+}
 
 //code to add information and create the table
 
@@ -324,11 +332,12 @@ function createTable(){
         panelBody.addClass('panel-body');
         $('.tab').append(panelBody);
 
-    return false;
-    
+
+
     console.log(venueNames[i]);
     console.log(otherInfo[i].title);
     console.log(midstepArtists[i].name);
+
 
   }
 }
