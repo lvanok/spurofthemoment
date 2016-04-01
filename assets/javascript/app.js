@@ -249,15 +249,15 @@ var mapLongLat
       function addToArray(){  
         for(var i = 0; i < bitResponse.length; i++){
            //pushes all other info from object to the other info array
-           otherInfo.push(bitResponse[i]); 
+           $(otherInfo).push(bitResponse[i]); 
 
             // pushes the name and lat long of the venues into an array stored in a global variable
 
-           venueNames.push(bitResponse[i].venue.name);
+           $(venueNames).push(bitResponse[i].venue.name);
 
-           midstepLocations.push(bitResponse[i].venue);
+           $(midstepLocations).push(bitResponse[i].venue);
 
-           venueLatLon.push("lat:"+bitResponse[i].venue.latitude + " lon:" + bitResponse[i].venue.longitude);
+           $(venueLatLon).push("lat:"+bitResponse[i].venue.latitude + " lon:" + bitResponse[i].venue.longitude);
 
 
 
@@ -267,9 +267,9 @@ var mapLongLat
 
             // after spending time trying to get the names to push into array, got it to work, but decided to push the entire artist object into an array for the global variable called "midstep"
 
-            midstepArtists.push(bitResponse[i].artists[j]);
+            $(midstepArtists).push(bitResponse[i].artists[j]);
 
-           bands.push(bitResponse[i].artists[j].name);
+           $(bands).push(bitResponse[i].artists[j].name);
 
            };
 
