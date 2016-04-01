@@ -247,6 +247,8 @@ var mapLongLat
 
       function addToArray(){  
         for(var i = 0; i < bitResponse.length; i++){
+           //pushes all other info from object to the other info array
+           otherInfo.push(bitResponse[i]); 
 
             // pushes the name and lat long of the venues into an array stored in a global variable
 
@@ -256,8 +258,7 @@ var mapLongLat
 
            venueLatLon.push("lat:"+bitResponse[i].venue.latitude + " lon:" + bitResponse[i].venue.longitude);
 
-           //pushes all other info from object to the other info array
-           otherInfo.push(bitResponse[i]);
+
 
            // second for loop for the artist information
 
