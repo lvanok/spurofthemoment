@@ -228,8 +228,6 @@ var mapLongLat
 
       jsonp: "callback",
 
-      // async: false,
-
       dataType: "jsonp",
 
       data: {
@@ -286,58 +284,30 @@ function createArtistList(){
 }
 
 //code to add information and create the table
+var tablePrefix = 'table';
+var tableId = '';
+var labelPrefix = 'label';
+var labelId = '';
 
 function createTable(){
   for(var i=0; i < bitResponse.length; i++){
-    var collapse = "collapse" + i;
+    //this creates the id for the header of the table
+    tableId = tablePrefix + i;
+    //this creates the id for the body of the table
+    bodyId = labelPrefix +i;
+    //this creates the variable tableRow which is for the header of each table
+    var tableRow = $('<a href= "#'+bodyId+'" id="' + tableId + '" class="btn btn-info" data-toggle="collapse"></a>');
+    //this sets the text of the header to the name pulled from the bands in town api object
+    $(tableRow).text(midstepArtists[i].name);
 
-    var panelDefault = $('<div>');
-        panelDefault.addClass('panel panel-default')
-        panelDefault.addClass('linkAllOthers');
-        panelDefault.attr('id', collapse);
-        $('.addAll').append(panelDefault);
+    //creates the variable bodyRow which is for the body of each artist table
+    var bodyRow = $('<div id="'+bodyId+'" class="collapse></div>');
+    $(bodyRow).text(otherInfo[i].title);
 
-    var panelHeading = $('<div>');
-        panelHeading.addClass('panel-heading');
-        panelHeading.attr('role', "tab");
-        panelHeading.attr('id', midstepArtists[i].name);
-        panelHeading.addClass("heading");
-        $('.linkAllOthers').append(panelHeading);
-
-    var panelTitle = $('<h4>');
-        panelTitle.addClass("panel-title");
-        panelTitle.addClass('title');
-        $('.heading').append(panelTitle);
-
-    var button = $('<a>');
-        // button.attr('id', "fourth");
-        button.attr('role', "button");
-        button.attr('data-toggle', 'collapse');
-        button.attr('data-parent', "#accordian");
-        button.attr('href', "#collapse"+[i]);
-        button.attr('aria-expanded', 'false');
-        button.attr('aria-controls', collapse);
-        button.text(otherInfo[i].title);
-        $('.title').append(button);
-
-    var tabPanel = $('<div>');
-        tabPanel.attr('id', collapse);
-        tabPanel.addClass('panel-collapse collapse in');
-        tabPanel.addClass('tab');
-        tabPanel.attr('role', 'tabpanel');
-        tabPanel.attr('aria-labelledby', '#'+ midstepArtists[i].name);
-        $('.linkAllOthers').append(tabPanel);
-
-    var panelBody = $('<div>');
-        panelBody.addClass('panel-body');
-        $('.tab').append(panelBody);
-
-
-
-    console.log(venueNames[i]);
-    console.log(otherInfo[i].title);
-    console.log(midstepArtists[i].name);
-
-
-  }
+    $(tableRow).append(bodyRow)
+    $('#table').append(tableRow);
+  };
+  console.log(venueNames[i]);
+  console.log(otherInfo[i].title);
+  console.log(midstepArtists[i].name);
 }
