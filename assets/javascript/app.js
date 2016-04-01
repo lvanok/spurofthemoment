@@ -306,23 +306,23 @@ function createTable(){
     //this sets the text of the header to the name pulled from the bands in town api object
     $(tableRow).text(bitResponse[i].title);
   
-    var main = $('<div class="panel panel-default">');
+    var main = $('<div class="panel panel-default"> <div class="panel-heading" id="#'+tableId+'"></div><ul id="#"'+bodyId+'"><li> '+bitResponse[i].artists[i].name+' </li> <li><a href="'+bitResponse[i].artists[i].website+'">'+bitResponse[i].artists[i].url+' </li></ul></div>');
     $('#table').append(main);
     
-    var header = $('<div class="panel-heading" id="#'+tableId+'"> </div>');
-    $(header).insertAfter(main);
+    // var header = $('<div class="panel-heading" id="#'+tableId+'"> </div>');
+    // $(header).insertAfter(main);
     
-    var list = $('<ul id="#"'+bodyId+'">');
-    $(list).insertAfter(header);
+    // var list = $('<ul id="#"'+bodyId+'">');
+    // $(list).insertAfter(header);
     
-    var listItems = $('<li> '+bitResponse[i].artists[i].name+' </li> <li><a href="'+bitResponse[i].artists[i].website+'">'+bitResponse[i].artists[i].url+' </li> ');
-    $(listItems).insertAfter(list);
+    // var listItems = $('<li> '+bitResponse[i].artists[i].name+' </li> <li><a href="'+bitResponse[i].artists[i].website+'">'+bitResponse[i].artists[i].url+' </li> ');
+    // $(listItems).insertAfter(list);
     
-    var listClose = $('</ul>');
-    $(listClose).insertAfter(listItems);
+    // var listClose = $('</ul>');
+    // $(listClose).insertAfter(listItems);
     
-    var mainClose = $("</div>")
-    $(mainClose).insertAfter(listClose);
+    // var mainClose = $("</div>")
+    // $(mainClose).insertAfter(listClose);
   };
 
 }
