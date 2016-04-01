@@ -1,4 +1,7 @@
-
+// hides the google map div until after the submit button is selected
+$(document).ready(function(){
+  $('#googleMapDiv').hide();
+})
 // FACEBOOK LOGIN API
 // This is called with the results from from FB.getLoginStatus().
   function statusChangeCallback(response) {
@@ -72,6 +75,10 @@
     );
   };
 
+  //prevents googlemaps and create tab function from running until the ajax call is complete 
+$(document).ajaxComplete(function(){
+    createTable();
+})
 //GOOGLE MAPS SCRIPT
   // global variable for position. this will end up storingthe user's position
   var pos = "";
@@ -184,8 +191,9 @@
     infoWindow.setContent(browserHasGeolocation ?
     'Error: The Geolocation service failed.' :
     'Error: Your browser doesn\'t support geolocation.');
+    }
   }
-}
+
 
 // BANDS IN TOWN API
 
@@ -217,6 +225,7 @@ var mapLongLat
     userInput= $("#userInput").val().trim();
     createArtistList();
     $('#userInput').val("");
+    $('#googleMapDiv').show();
 
     var queryURL = "https://api.bandsintown.com/artists/" + userInput + "/events/recommended?location=new+york,NY&radius=10&app_id=RUCB&api_version=2.0&format=json";
 
@@ -276,9 +285,7 @@ var mapLongLat
     };
 };
 
-$(document).ajaxComplete(function(){
-  createTable();
-})
+
 
 
 //code to make a list of user inputs just so i can see that it's working without console logging it
@@ -303,9 +310,11 @@ function createTable(){
     //this creates the id for the body of the table
     bodyId = labelPrefix +i;
 
-  
-    main = $('<div class="panel panel-default"> <div class="panel-heading" id="#'+tableId+'">'+bitResponse[i].title+'</div><ul id="#'+bodyId+'" class="list-group"><li class="list-group-item"> '+bitResponse[i].artists[i].name+' </li> <li class="list-group-item"><a href="'+bitResponse[i].artists[i].website+'">'+bitResponse[i].artists[i].url+' </li></ul></div>');
-    $('#table').append(main);
+    blankOutside = $('<div></div>');
+    $('#table').append(blankOutside);
+
+    main = $('<div class="panel panel-default"> <div class="panel-heading" id="#'+tableId+'">'+bitResponse[i].title+'</div><ul id="#'+bodyId+'" class="list-group"><li class="list-group-item"> '+bitResponse[i].artists[0].name+' </li> <li class="list-group-item"><a href="'+bitResponse[i].artists[0].website+'">'+bitResponse[i].artists[0].url+' </li></ul></div>');
+    $(main).insertAfter(blankOutside);
     
 
   };
