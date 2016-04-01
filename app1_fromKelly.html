@@ -56,26 +56,16 @@
 
               function addToArray(){  
                 for(var i = 0; i < bitResponse.length; i++){
-
                     // pushes the name and lat long of the venues into an array stored in a global variable
-
                    venueNames.push(bitResponse[i].venue.name);
-
                    venueLatLon.push("lat:"+bitResponse[i].venue.latitude + " lon:" + bitResponse[i].venue.longitude);
-
                    // second for loop for the artist information
-
                    for(var j = 0; j < bitResponse[i].artists.length; j++ ){
-
-                    // nate recommended this and helped me through it, but i am unsure of the use now that i have gotten further along, so I am commenting it out.
-
                     // midstep = bitResponse[i].artists[j];
-
                    bandNames.push(bitResponse[i].artists[j].name);
-
                    };
-            };
-        };
+                };
+              };
 
 
        //      trying to make this function run anonymously on document.done
