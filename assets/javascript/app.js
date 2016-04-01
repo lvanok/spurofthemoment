@@ -236,10 +236,11 @@ var mapLongLat
       },
 
       success: function( response ) {
-        console.log(response); 
+
         bitResponse = response;
+        console.log(bitResponse); 
         addToArray();
-        createTable();
+
       },
     })
     return false;
@@ -247,17 +248,18 @@ var mapLongLat
 
       function addToArray(){  
         for(var i = 0; i < bitResponse.length; i++){
+           //pushes all other info from object to the other info array
+           $(otherInfo).push(bitResponse[i]); 
 
             // pushes the name and lat long of the venues into an array stored in a global variable
 
-           venueNames.push(bitResponse[i].venue.name);
+           $(venueNames).push(bitResponse[i].venue.name);
 
-           midstepLocations.push(bitResponse[i].venue);
+           $(midstepLocations).push(bitResponse[i].venue);
 
-           venueLatLon.push("lat:"+bitResponse[i].venue.latitude + " lon:" + bitResponse[i].venue.longitude);
+           $(venueLatLon).push("lat:"+bitResponse[i].venue.latitude + " lon:" + bitResponse[i].venue.longitude);
 
-           //pushes all other info from object to the other info array
-           otherInfo.push(bitResponse[i]);
+
 
            // second for loop for the artist information
 
@@ -265,14 +267,18 @@ var mapLongLat
 
             // after spending time trying to get the names to push into array, got it to work, but decided to push the entire artist object into an array for the global variable called "midstep"
 
-            midstepArtists.push(bitResponse[i].artists[j]);
+            $(midstepArtists).push(bitResponse[i].artists[j]);
 
-           bands.push(bitResponse[i].artists[j].name);
+           $(bands).push(bitResponse[i].artists[j].name);
 
            };
+
     };
 };
 
+$(document).ajaxComplete(function(){
+  createTable();
+})
 
 
 //code to make a list of user inputs just so i can see that it's working without console logging it
@@ -286,7 +292,7 @@ function createArtistList(){
 //code to add information and create the table
 var tablePrefix = 'table';
 var tableId = '';
-var labelPrefix = 'label';
+var labelPrefix = 'listItem';
 var labelId = '';
 
 function createTable(){
@@ -295,19 +301,28 @@ function createTable(){
     tableId = tablePrefix + i;
     //this creates the id for the body of the table
     bodyId = labelPrefix +i;
-    //this creates the variable tableRow which is for the header of each table
-    var tableRow = $('<a href= "#'+bodyId+'" id="' + tableId + '" class="btn btn-info" data-toggle="collapse"></a>');
-    //this sets the text of the header to the name pulled from the bands in town api object
-    $(tableRow).text(midstepArtists[i].name);
-
-    //creates the variable bodyRow which is for the body of each artist table
-    var bodyRow = $('<div id="'+bodyId+'" class="collapse></div>');
-    $(bodyRow).text(otherInfo[i].title);
-
-    $(tableRow).append(bodyRow)
-    $('#table').append(tableRow);
+    // //this creates the variable tableRow which is for the header of each table
+    // var tableRow = $('<div class="panel-heading" id="#'+tableId+'"></div>');
+    // //this sets the text of the header to the name pulled from the bands in town api object
+    // $(tableRow).text(bitResponse[i].title);
+  
+    main = $('<div class="panel panel-default"> <div class="panel-heading" id="#'+tableId+'">'+bitResponse[i].title+'</div><ul id="#'+bodyId+'" class="list-group"><li class="list-group-item"> '+bitResponse[i].artists[i].name+' </li> <li class="list-group-item"><a href="'+bitResponse[i].artists[i].website+'">'+bitResponse[i].artists[i].url+' </li></ul></div>');
+    $('#table').append(main);
+    
+    // var header = $('<div class="panel-heading" id="#'+tableId+'"> </div>');
+    // $(header).insertAfter(main);
+    
+    // var list = $('<ul id="#"'+bodyId+'">');
+    // $(list).insertAfter(header);
+    
+    // var listItems = $('<li> '+bitResponse[i].artists[i].name+' </li> <li><a href="'+bitResponse[i].artists[i].website+'">'+bitResponse[i].artists[i].url+' </li> ');
+    // $(listItems).insertAfter(list);
+    
+    // var listClose = $('</ul>');
+    // $(listClose).insertAfter(listItems);
+    
+    // var mainClose = $("</div>")
+    // $(mainClose).insertAfter(listClose);
   };
-  console.log(venueNames[i]);
-  console.log(otherInfo[i].title);
-  console.log(midstepArtists[i].name);
+
 }
