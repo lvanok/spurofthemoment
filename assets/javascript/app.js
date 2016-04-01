@@ -236,10 +236,11 @@ var mapLongLat
       },
 
       success: function( response ) {
-        console.log(response); 
+
         bitResponse = response;
+        console.log(bitResponse); 
         addToArray();
-        createTable();
+
       },
     })
     return false;
@@ -247,17 +248,18 @@ var mapLongLat
 
       function addToArray(){  
         for(var i = 0; i < bitResponse.length; i++){
+           //pushes all other info from object to the other info array
+           $(otherInfo).push(bitResponse[i]); 
 
             // pushes the name and lat long of the venues into an array stored in a global variable
 
-           venueNames.push(bitResponse[i].venue.name);
+           $(venueNames).push(bitResponse[i].venue.name);
 
-           midstepLocations.push(bitResponse[i].venue);
+           $(midstepLocations).push(bitResponse[i].venue);
 
-           venueLatLon.push("lat:"+bitResponse[i].venue.latitude + " lon:" + bitResponse[i].venue.longitude);
+           $(venueLatLon).push("lat:"+bitResponse[i].venue.latitude + " lon:" + bitResponse[i].venue.longitude);
 
-           //pushes all other info from object to the other info array
-           otherInfo.push(bitResponse[i]);
+
 
            // second for loop for the artist information
 
@@ -265,14 +267,18 @@ var mapLongLat
 
             // after spending time trying to get the names to push into array, got it to work, but decided to push the entire artist object into an array for the global variable called "midstep"
 
-            midstepArtists.push(bitResponse[i].artists[j]);
+            $(midstepArtists).push(bitResponse[i].artists[j]);
 
-           bands.push(bitResponse[i].artists[j].name);
+           $(bands).push(bitResponse[i].artists[j].name);
 
            };
+
     };
 };
 
+$(document).ajaxComplete(function(){
+  createTable();
+})
 
 
 //code to make a list of user inputs just so i can see that it's working without console logging it
@@ -284,6 +290,7 @@ function createArtistList(){
 }
 
 //code to add information and create the table
+<<<<<<< HEAD
 var panelPrefix = 'panel';
 var panelId = '';
 var pHeadingPrefix = 'pheading';
@@ -296,12 +303,19 @@ var pCollapsePrefix = 'pcollapse';
 var pCollapseId = '';
 var pBodyPrefix = 'pbody';
 var pBodyId = '';
+=======
+var tablePrefix = 'table';
+var tableId = '';
+var labelPrefix = 'listItem';
+var labelId = '';
+>>>>>>> 7029b18a4a20032a53bb1dba7f7244671c20579f
 
 function createTable(){
   for(var i=0; i < bitResponse.length; i++){
     //this creates the id for the panel of the table
     panelId = panelPrefix + i;
     //this creates the id for the header of the table
+<<<<<<< HEAD
     pHeadingId = pHeadingPrefix + i;
     //this creates the id for the title of the table
     pTitleId = pTitlePrefix +i;
@@ -340,8 +354,33 @@ function createTable(){
     $(tcollapse).append(tbody);
 
     $('#table').append(panelPanel);
+=======
+    tableId = tablePrefix + i;
+    //this creates the id for the body of the table
+    bodyId = labelPrefix +i;
+    // //this creates the variable tableRow which is for the header of each table
+    // var tableRow = $('<div class="panel-heading" id="#'+tableId+'"></div>');
+    // //this sets the text of the header to the name pulled from the bands in town api object
+    // $(tableRow).text(bitResponse[i].title);
+  
+    main = $('<div class="panel panel-default"> <div class="panel-heading" id="#'+tableId+'">'+bitResponse[i].title+'</div><ul id="#'+bodyId+'" class="list-group"><li class="list-group-item"> '+bitResponse[i].artists[i].name+' </li> <li class="list-group-item"><a href="'+bitResponse[i].artists[i].website+'">'+bitResponse[i].artists[i].url+' </li></ul></div>');
+    $('#table').append(main);
+    
+    // var header = $('<div class="panel-heading" id="#'+tableId+'"> </div>');
+    // $(header).insertAfter(main);
+    
+    // var list = $('<ul id="#"'+bodyId+'">');
+    // $(list).insertAfter(header);
+    
+    // var listItems = $('<li> '+bitResponse[i].artists[i].name+' </li> <li><a href="'+bitResponse[i].artists[i].website+'">'+bitResponse[i].artists[i].url+' </li> ');
+    // $(listItems).insertAfter(list);
+    
+    // var listClose = $('</ul>');
+    // $(listClose).insertAfter(listItems);
+    
+    // var mainClose = $("</div>")
+    // $(mainClose).insertAfter(listClose);
+>>>>>>> 7029b18a4a20032a53bb1dba7f7244671c20579f
   };
-  console.log(venueNames[i]);
-  console.log(otherInfo[i].title);
-  console.log(midstepArtists[i].name);
+
 }
