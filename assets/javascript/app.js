@@ -304,7 +304,7 @@ function createTable(){
     //this creates the variable tableRow which is for the header of each table
     var tableRow = $('<div class="panel-heading" id="#'+tableId+'"></div>');
     //this sets the text of the header to the name pulled from the bands in town api object
-    $(tableRow).text(midstepArtists[i].name);
+    $(tableRow).text(bitResponse[i].title);
   
     var main = $('<div class="panel panel-default">');
     $('#table').append(main);
@@ -315,7 +315,7 @@ function createTable(){
     var list = $('<ul id="#"'+bodyId+'">');
     $(list).insertAfter(header);
     
-    var listItems = $('<li> midstepArtists[i].name </li> <li> otherInfo[i].formatted_datetime </li> ');
+    var listItems = $('<li> '+bitResponse[i].artists[i].name+' </li> <li><a href="'+bitResponse[i].artists[i].website+'">'+bitResponse[i].artists[i].url+' </li> ');
     $(listItems).insertAfter(list);
     
     var listClose = $('</ul>');
