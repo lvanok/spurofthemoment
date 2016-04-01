@@ -292,7 +292,7 @@ function createArtistList(){
 //code to add information and create the table
 var tablePrefix = 'table';
 var tableId = '';
-var labelPrefix = 'label';
+var labelPrefix = 'listItem';
 var labelId = '';
 
 function createTable(){
@@ -301,12 +301,12 @@ function createTable(){
     tableId = tablePrefix + i;
     //this creates the id for the body of the table
     bodyId = labelPrefix +i;
-    //this creates the variable tableRow which is for the header of each table
-    var tableRow = $('<div class="panel-heading" id="#'+tableId+'"></div>');
-    //this sets the text of the header to the name pulled from the bands in town api object
-    $(tableRow).text(bitResponse[i].title);
+    // //this creates the variable tableRow which is for the header of each table
+    // var tableRow = $('<div class="panel-heading" id="#'+tableId+'"></div>');
+    // //this sets the text of the header to the name pulled from the bands in town api object
+    // $(tableRow).text(bitResponse[i].title);
   
-    var main = $('<div class="panel panel-default"> <div class="panel-heading" id="#'+tableId+'"></div><ul id="#"'+bodyId+'"><li> '+bitResponse[i].artists[i].name+' </li> <li><a href="'+bitResponse[i].artists[i].website+'">'+bitResponse[i].artists[i].url+' </li></ul></div>');
+    main = $('<div class="panel panel-default"> <div class="panel-heading" id="#'+tableId+'">'+bitResponse[i].title+'</div><ul id="#'+bodyId+'" class="list-group"><li class="list-group-item"> '+bitResponse[i].artists[i].name+' </li> <li class="list-group-item"><a href="'+bitResponse[i].artists[i].website+'">'+bitResponse[i].artists[i].url+' </li></ul></div>');
     $('#table').append(main);
     
     // var header = $('<div class="panel-heading" id="#'+tableId+'"> </div>');
