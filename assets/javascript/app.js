@@ -271,10 +271,13 @@ var mapLongLat
            bands.push(bitResponse[i].artists[j].name);
 
            };
-        createTable();
+
     };
 };
 
+$(document).ajaxComplete(function(){
+  createTable();
+})
 
 
 //code to make a list of user inputs just so i can see that it's working without console logging it
