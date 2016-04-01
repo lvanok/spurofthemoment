@@ -302,18 +302,27 @@ function createTable(){
     //this creates the id for the body of the table
     bodyId = labelPrefix +i;
     //this creates the variable tableRow which is for the header of each table
-    var tableRow = $('<a href= "#'+bodyId+'" id="' + tableId + '" class="btn btn-info" data-toggle="collapse"></a>');
+    var tableRow = $('<div class="panel-heading" id="#'+tableId+'"></div>');
     //this sets the text of the header to the name pulled from the bands in town api object
     $(tableRow).text(midstepArtists[i].name);
-
-    //creates the variable bodyRow which is for the body of each artist table
-    var bodyRow = $('<div id="'+bodyId+'" class="collapse></div>');
-    $(bodyRow).text(otherInfo[i].title);
-
-    $(tableRow).insertAfter(bodyRow)
-    $('#table').append(tableRow);
+  
+    var main = $('<div class="panel panel-default">');
+    $('#table').append(main);
+    
+    var header = $('<div class="panel-heading" id="#'+tableId+'"> </div>');
+    $(header).insertAfter(main);
+    
+    var list = $('<ul id="#"'+bodyId+'">');
+    $(list).insertAfter(header);
+    
+    var listItems = $('<li> midstepArtists[i].name </li> <li> otherInfo[i].formatted_datetime </li> ');
+    $(listItems).insertAfter(list);
+    
+    var listClose = $('</ul>');
+    $(listClose).insertAfter(listItems);
+    
+    var mainClose = $("</div>")
+    $(mainClose)=insertAfter(listClose);
   };
-  console.log(venueNames[i]);
-  console.log(otherInfo[i].title);
-  console.log(midstepArtists[i].name);
+
 }
