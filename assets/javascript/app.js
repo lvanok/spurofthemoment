@@ -284,28 +284,62 @@ function createArtistList(){
 }
 
 //code to add information and create the table
-var tablePrefix = 'table';
-var tableId = '';
-var labelPrefix = 'label';
-var labelId = '';
+var panelPrefix = 'panel';
+var panelId = '';
+var pHeadingPrefix = 'pheading';
+var pHeadingId = '';
+var pTitlePrefix = 'pTitle';
+var pTitleId = '';
+var buttonPrefix = 'button';
+var buttonId = '';
+var pCollapsePrefix = 'pcollapse';
+var pCollapseId = '';
+var pBodyPrefix = 'pbody';
+var pBodyId = '';
 
 function createTable(){
   for(var i=0; i < bitResponse.length; i++){
+    //this creates the id for the panel of the table
+    panelId = panelPrefix + i;
     //this creates the id for the header of the table
-    tableId = tablePrefix + i;
-    //this creates the id for the body of the table
-    bodyId = labelPrefix +i;
-    //this creates the variable tableRow which is for the header of each table
-    var tableRow = $('<a href= "#'+bodyId+'" id="' + tableId + '" class="btn btn-info" data-toggle="collapse"></a>');
-    //this sets the text of the header to the name pulled from the bands in town api object
-    $(tableRow).text(midstepArtists[i].name);
+    pHeadingId = pHeadingPrefix + i;
+    //this creates the id for the title of the table
+    pTitleId = pTitlePrefix +i;
+    //this creates the id for the panel button of the table
+    buttonId = buttonPrefix + i;
+    //this creates the id for the collapse panel of the table
+    pCollapseId = pCollapsePrefix +i;
+    //this creates the id for the panel body of the table
+    pBodyId = pBodyPrefix +i;
 
-    //creates the variable bodyRow which is for the body of each artist table
-    var bodyRow = $('<div id="'+bodyId+'" class="collapse></div>');
-    $(bodyRow).text(otherInfo[i].title);
 
-    $(tableRow).append(bodyRow)
-    $('#table').append(tableRow);
+    //creates the panel for the table
+    var panelPanel = $('<div class="panel panel-default" id="'+panelId+'></div>');
+    //this creates the variable thead which is for the header of each table
+    var thead = $('<div id="' + pHeadingId + '" class="panel-heading"></div>');
+    //this creates the variable ptitle which is for the header of each table
+    var ptitle = $('<h4 class="panel-title" data-toggle="collapse" href="#'+pBodyId+'" id="'+pTitleId+'"></h4>');
+    //this creates the variable pbutton which is for the button of the title
+    // var pbutton = $('<a data-toggle="collapse" href="#'+buttonId+'"></a>');
+    //this sets the text of the button to the name pulled from the bands in town api object
+    $(ptitle).text(midstepArtists[i].name);
+
+  
+    //this creates the tcollapse variable which is the collapse div for the body
+    var tcollapse = $('<div id="#'+pCollapseId+'" class="panel-collapse collapse"></div>');
+    //this creates the tbody variable which is for the body of the panel
+    var tbody = $('<div id="#'+pBodyId+'" class="panel-body"></div>');
+
+    //this enters the artist info into the body
+    $(tbody).text(venueNames[i]);
+
+    //this appends all of the buttons to the HTML page
+    $(panelPanel).append(thead);
+    $(panelPanel).append(tcollapse);
+    $(thead).append(ptitle);
+    $(tcollapse).append(tbody);
+
+    $('#table').append(panelPanel);
   };
   console.log(venueNames[i]);
   console.log(otherInfo[i].title);
