@@ -304,7 +304,7 @@ function createTable(){
     var bodyRow = $('<div id="'+bodyId+'" class="collapse></div>');
     $(bodyRow).text(otherInfo[i].title);
 
-    $(tableRow).append(bodyRow)
+    $(tableRow).after(bodyRow)
     $('#table').append(tableRow);
   };
   console.log(venueNames[i]);
