@@ -322,7 +322,7 @@ function createTable(){
     $(listClose).insertAfter(listItems);
     
     var mainClose = $("</div>")
-    $(mainClose)=insertAfter(listClose);
+    $(mainClose).insertAfter(listClose);
   };
 
 }
