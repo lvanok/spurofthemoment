@@ -37,7 +37,9 @@ html, body {
   margin: 0px !important;
 }
 #googleMap{
-  display: initial !important;
+  height:  400px !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 /*
 
