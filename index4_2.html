@@ -47,12 +47,190 @@ function onSignIn(googleUser) {
   console.log('Email: ' + profile.getEmail());
 
   </script>
-}
+
 <!-- Google map -->
     <div class="container" id="googleMapDiv">
       <div id="googleMap"></div>
     </div>
 
+
+    <!-- REST OF HTML -->
+
+    <!-- for sticky footer -->
+    <div class="wrapper">
+
+    <div class="brand">Spur of the Moment</div>
+    <div class="address-bar">Search for upcoming concerts based on the music you love!</div>
+
+    <!-- Navigation -->
+      <nav class="navbar navbar-default" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
+            <a class="navbar-brand" href="index.html">Spur of the Moment</a>
+          </div>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li>
+                <a href="index.html">Home</a>
+              </li>
+              <li>
+                <a href="about.html">About</a>
+              </li>
+              <li>
+                <a href="blog.html">Blog</a>
+              </li>
+              <li>
+                <a href="contact.html">Contacts</a>
+              </li>
+
+            </ul>
+          </div>
+        <!-- /.navbar-collapse -->
+        </div>
+      <!-- /.container -->
+      </nav>
+
+    <!-- information about app -->
+        <div class="container">
+          <div class="row">
+            <div class="box">
+              <div class="col-md-12">
+                <h2 class="brand-before"> Log In with Facebook to get started! </h2>
+              </div>
+              <!-- FACEBOOK LOG IN BUTTON -->
+              <div class="col-md-12">
+                <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="true">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+    <!-- user search option -->
+        <div class="container">
+          <div class="row">
+            <div class="box">
+              <div class="col-md-12">
+                <h1><small>Enter the name of an artist in the search box below to get information about super fun events in your area. </small></h1> 
+              </div>
+              <div class="col-md-12">
+                <p>If your favorite band isn't playing nearby, <strong>have no fear</strong>, this app also searches for similar artists who are having events in your area.  It's a fantastic way to discover new artists, remember old artists and experience seeing your favorite artists live. </p>
+              </div>
+              <div class="col-md-12">
+                <form action="" method="POST" class="form-inline" role="form">
+                  <div class="form-group">
+                    <label class="sr-only" for="">label</label>
+                    <input type="text" class="form-control" id="userInput" placeholder="Search for Bands">
+                  </div>
+                  <button type="submit" class="btn btn-secondary" id="submitButton">Submit</button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="userList"></div>
+            </div>
+          </div>
+        </div>
+
+      <div class="container" id="photoCarousel">
+
+        <div class="row">
+          <div class="box">
+            <div class="col-lg-12 text-center">
+              <div id="carousel-example-generic" class="carousel slide">
+              <!-- Indicators -->
+              <ol class="carousel-indicators hidden-xs">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                </ol>
+           
+              <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                  <div class="item active">
+                    <img class="img-responsive img-full" src="img/guitarSun.jpg" alt="">
+                  </div>
+                  <div class="item"
+                    <img class="img-responsive img-full" src="img/romanticSax.jpg" alt="">
+                  </div>
+                  <div class="item">
+                    <img class="img-responsive img-full" src="img/skyline.jpg" alt="">
+                  </div>
+                  <div class="item">
+                    <img class="img-responsive img-full" src="img/guitarStrings.jpg" alt="">
+                  </div>
+                  <div class="item">
+                    <img class="img-responsive img-full" src="img/Massive-attack-airline-codes.jpg" alt="">
+                  </div>
+                  <div class="item">
+                    <img class="img-responsive img-full" src="img/LgRecord.jpg" alt="">
+                  </div>
+                </div>
+
+              <!-- Controls -->
+                <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                  <span class="icon-prev"></span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                  <span class="icon-next"></span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    <!-- Google map -->
+    <div class="row" id="googleMapDiv">
+
+        <div class="container">
+          <div id="googleMap"></div>
+        </div>
+
+    </div>
+
+    <!-- LIST OF EVENTS TABLE -->
+
+    <div class="container" id="table"> 
+
+    </div>
+
+
+    <div class="push"></div>
+    </div>
+    <!-- footer -->
+      <div class="footer">
+        <a href="#" title="To Top">
+          <span class="glyphicon glyphicon-music"></span>
+        </a>
+        <p id="footer">Spur of the Moment</p> 
+      </div>
+
+    <!-- datatable tavascript & css needed for google maps to run -->
+    <script type="text/javascript" src="https://cdn.datatables.net/t/bs-3.3.6/dt-1.10.11,b-1.1.2,b-colvis-1.1.2,fc-3.2.1,fh-3.1.1,r-2.0.2/datatables.js"></script>
+    <!-- javascript -->
+    <script src="assets/javascript/app.js"></script>
+    <!-- googleMaps API link -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaNIL3WrVXoIxK_jN1LoFluEYKKY8-qzw&signed_in=true&callback=initMap" async defer></script>
+
+    </body>
+    </html> g
 <!-- LIST OF EVENTS TABLE -->
 
 <div class="container" id="table"> 

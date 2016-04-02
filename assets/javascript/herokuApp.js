@@ -28,39 +28,39 @@ $(document).ajaxComplete(function(){
       zoom: 10
     });
     //info window that shows current location
-    var infoWindow = new google.maps.InfoWindow({map: map});
-    marker = new google.maps.Marker({
-      map: map,
-      draggable: false,
-      animation: google.maps.Animation.DROP,
-      position: {lat: 40.663, lng: -73.982}    
-    });
-    marker.addListener('click', toggleBounce);
+    // var infoWindow = new google.maps.InfoWindow({map: map});
+    // marker = new google.maps.Marker({
+    //   map: map,
+    //   draggable: false,
+    //   animation: google.maps.Animation.DROP,
+    //   position: {lat: 40.663, lng: -73.982}    
+    // });
+    // marker.addListener('click', toggleBounce);
 
-    function toggleBounce() {
-      if (marker.getAnimation() !== null) {
-        marker.setAnimation(null);
-      } else {
-        marker.setAnimation(google.maps.Animation.BOUNCE);
-      }
-    }
-    var contentString = '<div id="content">'+
-      '<div id="siteNotice">'+
-      '</div>'+
-      '<h1 id="firstHeading" class="firstHeading">Band Name or Header</h1>'+
-      '<div id="bodyContent">'+
-      '<p><b>Content</b>, also <b>more content</b>, is a content '
+    // function toggleBounce() {
+    //   if (marker.getAnimation() !== null) {
+    //     marker.setAnimation(null);
+    //   } else {
+    //     marker.setAnimation(google.maps.Animation.BOUNCE);
+    //   }
+    // }
+    // var contentString = '<div id="content">'+
+    //   '<div id="siteNotice">'+
+    //   '</div>'+
+    //   '<h1 id="firstHeading" class="firstHeading">Band Name or Header</h1>'+
+    //   '<div id="bodyContent">'+
+    //   '<p><b>Content</b>, also <b>more content</b>, is a content '
 
-    var infowindow = new google.maps.InfoWindow({
-      content: contentString,
-      maxWidth: 250
-    });
+    // var infowindow = new google.maps.InfoWindow({
+    //   content: contentString,
+    //   maxWidth: 250
+    // });
 
     //event listener that calls addmarker() when the map is clicked
     marker.addListener('click', function() {
       infowindow.open(map, marker);
     });
-    google.maps.event.addListener(map, 'mouseover', function(event) {
+    google.maps.event.addListener(map, 'click', function(event) {
       addMarker(event.latLng, map);
     });
 
@@ -82,7 +82,7 @@ $(document).ajaxComplete(function(){
       
       //Attach click event to the marker.
       (function (marker, venueData) {
-        google.maps.event.addListener(marker, 'mouseover',function (e) {
+        google.maps.event.addListener(marker, 'click',function (e) {
           //Wrap the content inside an HTML DIV in order to set height and width of InfoWindow.
           infoWindow.setContent("<div class =\'" + "infoPane" + "\'' style = 'width:200px;min-height:40px'>" +"<h1><b>"+ venueData.name + "</h1></b></div>");
           infoWindow.open(map, marker);
