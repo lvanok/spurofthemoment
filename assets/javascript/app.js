@@ -79,7 +79,7 @@ $(document).ajaxComplete(function(){
       (function (marker, venueData) {
         google.maps.event.addListener(marker, 'click',function (e) {
           //Wrap the content inside an HTML DIV in order to set height and width of InfoWindow.
-          infoWindow.setContent("<div class =\'" + "infoPane" + "\'' style = 'width:200px;min-height:40px'>" +"<h1><b>"+ venueData.name + "</h1></b></div>");
+          infoWindow.setContent("<div class =\'" + "infoPane" + "\'' style = 'width:200px;min-height:40px'>" +"<h1><b>"+bitResponse[i].artists[0].name+ "</h1></b> <br> <h1><small>"+ venueData.name +" </small></h1></div>");
           infoWindow.open(map, marker);
         });
       })(marker, venueData);
