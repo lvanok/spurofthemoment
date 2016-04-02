@@ -4,7 +4,7 @@ html, body {
   padding: 0;
 }
 #googleMap {
-  height: 100%;
+  height: 400px;
   width: 100%;
 }
 #container {
