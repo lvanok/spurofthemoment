@@ -236,7 +236,7 @@ function createTable(){
     blankOutside = $('<div></div>');
     $('#table').append(blankOutside);
 
-    main = $('<div class="panel panel-default"> <div class="panel-heading" id="#'+tableId+'">'+bitResponse[i].title+'</div><div class="panel-body"> <img src="'+bitResponse[i].artists[0].thumb_url+'"></div><ul id="#'+bodyId+'" class="list-group"> <li class="list-group-item"> Website: <a href="'+bitResponse[i].artists[0].website+'">'+bitResponse[i].artists[0].url+' </li> <li class="list-group-item">'+bitResponse[i].formatted_datetime+'' </li> <li class="list-group-item"> "Get tickets: "<a href="'+ bitResponse[i].ticket_URL +'"> +bitResponse[i].ticket_type+' </a> </li><li class="list-group-item">"Ticket Status:"'+bitResponse[i].ticket_status+''  </li></ul></div>');
+    main = $('<div class="panel panel-default"> <div class="panel-heading" id="#'+tableId+'">'+bitResponse[i].title+'</div><div class="panel-body"> <img src="'+bitResponse[i].artists[0].thumb_url+'"></div><ul id="#'+bodyId+'" class="list-group"> <li class="list-group-item"> Website: <a href="'+bitResponse[i].artists[0].website+'">'+bitResponse[i].artists[0].url+' </li> <li class="list-group-item">'+bitResponse[i].formatted_datetime+' </li> <li class="list-group-item"> Get tickets: <a href="'+ bitResponse[i].ticket_URL +'"> '+bitResponse[i].ticket_type+' </a> </li><li class="list-group-item">Ticket Status:'+bitResponse[i].ticket_status+'  </li></ul></div>');
     $(main).insertAfter(blankOutside);
     
 
