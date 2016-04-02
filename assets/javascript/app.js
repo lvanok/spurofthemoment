@@ -2,78 +2,6 @@
 $(document).ready(function(){
   $('#googleMapDiv').hide();
 })
-// FACEBOOK LOGIN API
-// This is called with the results from from FB.getLoginStatus().
-  function statusChangeCallback(response) {
-    console.log('statusChangeCallback');
-    console.log(response);
-    // The response object is returned with a status field that lets the app know the current login status of the person. Full docs on the response object can be found in the documentation for FB.getLoginStatus().
-    if (response.status === 'connected') {
-      // Logged into your app and Facebook.
-      testAPI();
-    } else if (response.status === 'not_authorized') {
-      // The person is logged into Facebook, but not your app.
-      document.getElementById('status').innerHTML = 'Please log ' + 'into this app.';
-    } else {
-      // The person is not logged into Facebook, so we're not sure if hey are logged into this app or not.
-      document.getElementById('status').innerHTML = 'Please log ' + 'into Facebook.';
-    }
-  };
-  // This function is called when someone finishes with the Login Button.  See the onlogin handler attached to it in the sample code below.
-  function checkLoginState() {
-    FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
-    });
-  };
-
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '1729912430587543',
-      cookie     : true,  // enable cookies to allow the server to access the session
-      xfbml      : true,  // parse social plugins on this page
-      version    : 'v2.5' // use graph api version 2.5
-    });
-    // Now that we've initialized the JavaScript SDK, we call FB.getLoginStatus().  This function gets the state of the person visiting this page and can return one of three states to the callback you provide.  They can be:
-      // 1. Logged into your app ('connected')
-      // 2. Logged into Facebook, but not your app ('not_authorized')
-      // 3. Not logged into Facebook and can't tell if they are logged into your app or not.
-      // These three cases are handled in the callback function.
-
-    FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
-    });
-  };
-
-
-  // Load the SDK asynchronously
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-  // Here we run a very simple test of the Graph API after login is successful.  See statusChangeCallback() for when this call is made.
-  function testAPI() {
-    console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me', function(response) {
-      console.log('Successful login for: ' + response.name);
-      document.getElementById('status').innerHTML = 'Thanks for logging in, ' + response.name + '!';
-    });
-  };
-  function getUserInfo(){
-    FB.login(function(response) {
-      // handle the response
-    }, {scope: 'user_likes, user_actions.music'});
-    FB.api(
-      '/me',
-      'GET',
-      {"fields":"music{genre,artists_we_like,name, picture{url}}"},
-      function(response) {
-        console.log(response);
-      }
-    );
-  };
 
   //prevents googlemaps and create tab function from running until the ajax call is complete 
 $(document).ajaxComplete(function(){
@@ -116,17 +44,7 @@ $(document).ajaxComplete(function(){
         marker.setAnimation(google.maps.Animation.BOUNCE);
       }
     }
-    var contentString = '<div id="content">'+
-      '<div id="siteNotice">'+
-      '</div>'+
-      '<h1 id="firstHeading" class="firstHeading">Band Name or Header</h1>'+
-      '<div id="bodyContent">'+
-      '<p><b>Content</b>, also <b>more content</b>, is a content '
-      '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
-      'https://en.wikipedia.org/w/index.php?title=Uluru</a> '+
-      '(last visited June 22, 2009).</p>'+
-      '</div>'+
-      '</div>';
+    var contentString = ""
 
     var infowindow = new google.maps.InfoWindow({
       content: contentString,
@@ -137,7 +55,7 @@ $(document).ajaxComplete(function(){
     marker.addListener('click', function() {
       infowindow.open(map, marker);
     });
-    google.maps.event.addListener(map, 'mouseover', function(event) {
+    google.maps.event.addListener(map, 'click', function(event) {
       addMarker(event.latLng, map);
     });
 
@@ -154,14 +72,14 @@ $(document).ajaxComplete(function(){
         marker = new google.maps.Marker({
           position: myLatlng,
           map: map,
-          label: bitResponse[i].title,
+          label: venueData.name,
         });
       
       //Attach click event to the marker.
       (function (marker, venueData) {
         google.maps.event.addListener(marker, 'click',function (e) {
           //Wrap the content inside an HTML DIV in order to set height and width of InfoWindow.
-          infoWindow.setContent("<div style = 'width:200px;min-height:40px'>" +showData.title + "</div>");
+          infoWindow.setContent("<div class =\'" + "infoPane" + "\'' style = 'width:200px;min-height:40px'>" +"<h1><b>"+ venueData.name + "</h1></b></div>");
           infoWindow.open(map, marker);
         });
       })(marker, venueData);
@@ -175,9 +93,12 @@ $(document).ajaxComplete(function(){
       lat: position.coords.latitude,
       lng: position.coords.longitude
       };
+      latPos = pos.lat;
+      lngPos = pos.lng;
       infoWindow.setPosition(pos);
       infoWindow.setContent('Location found.');
       map.setCenter(pos);
+      center: ({lat: latPos, lng: lngPos});
     }, 
     function() {
       handleLocationError(true, infoWindow, map.getCenter());
@@ -227,7 +148,7 @@ var mapLongLat
     createArtistList();
     $('#userInput').val("");
     $('#googleMapDiv').show();
-    $('#photoCarousel').hide();
+    $('#carousel').hide();
 
     var queryURL = "https://api.bandsintown.com/artists/" + userInput + "/events/recommended?location="+pos.lat + "," + pos.lng + "&radius=30&only_recs=false&app_id=RUCB&api_version=2.0&format=json";
 
@@ -315,7 +236,7 @@ function createTable(){
     blankOutside = $('<div></div>');
     $('#table').append(blankOutside);
 
-    main = $('<div class="panel panel-default"> <div class="panel-heading" id="#'+tableId+'">'+bitResponse[i].title+'</div><div class="panel-body"> <img src="'+bitResponse[i].artists[0].thumb_url+'"></div><ul id="#'+bodyId+'" class="list-group"> <li class="list-group-item"> Website: <a href="'+bitResponse[i].artists[0].website+'">'+bitResponse[i].artists[0].url+' </li> <li class="list-group-item">  </li></ul></div>');
+    main = $('<div class="panel panel-default"> <div class="panel-heading" id="#'+tableId+'">'+bitResponse[i].title+'</div><div class="panel-body"> <img src="'+bitResponse[i].artists[0].thumb_url+'"></div><ul id="#'+bodyId+'" class="list-group"> <li class="list-group-item"> Website: <a href="'+bitResponse[i].artists[0].website+'">'+bitResponse[i].artists[0].url+' </li> <li class="list-group-item">'+bitResponse[i].formatted_datetime+''  </li></li> <li class="list-group-item"> "Get tickets: "<a href="'+ bitResponse[i].ticket_URL +'"> +bitResponse[i].ticket_type+' </a> </li><li class="list-group-item">"Ticket Status:"'+bitResponse[i].ticket_status+''  </li></ul></div>');
     $(main).insertAfter(blankOutside);
     
 
