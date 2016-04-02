@@ -89,18 +89,18 @@ $(document).ajaxComplete(function(){
   // Try HTML5 geolocation.
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
-      pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-      map.setCenter(pos);
-      // pos = {
-      // lat: position.coords.latitude,
-      // lng: position.coords.longitude
-      // };
-      // latPos = pos.lat;
-      // lngPos = pos.lng;
-      // infoWindow.setPosition(pos);
-      // infoWindow.setContent('Location found.');
+      // pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
       // map.setCenter(pos);
-      // center: ({lat: latPos, lng: lngPos});
+      pos = {
+      lat: position.coords.latitude,
+      lng: position.coords.longitude
+      };
+      latPos = pos.lat;
+      lngPos = pos.lng;
+      infoWindow.setPosition(pos);
+      infoWindow.setContent('Location found.');
+      map.setCenter(pos);
+      center: ({lat: latPos, lng: lngPos});
     }, 
     function() {
       handleLocationError(true, infoWindow, map.getCenter());
