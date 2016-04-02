@@ -228,7 +228,7 @@ var mapLongLat
     $('#userInput').val("");
     $('#googleMapDiv').show();
 
-    var queryURL = "https://api.bandsintown.com/artists/" + userInput + "/events/recommended?location="+pos.lat + "," + pos.lng + "&radius=10&app_id=RUCB&api_version=2.0&format=json";
+    var queryURL = "https://api.bandsintown.com/artists/" + userInput + "/events/recommended?location="+pos.lat + "," + pos.lng + "&radius=20&only_recs=false&app_id=RUCB&api_version=2.0&format=json";
 
     $.ajax({
 
