@@ -41,8 +41,11 @@ html, body {
   margin: 0 !important;
   padding: 0 !important;
 }
+#g-signin2{
+  float: right;
+  margin-right: 45%;
+}
 /*
-
 Sticky Footer by Ryan Fait
 http://ryanfait.com/
 
