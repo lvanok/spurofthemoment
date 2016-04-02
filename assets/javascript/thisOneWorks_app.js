@@ -157,14 +157,15 @@ $('#submitButton').on('click', function(){
         var marker = new google.maps.Marker({
             position: myLatlng,
             map: map,
-            label: bitResponse.title
+            label: venueData.name
         });
     
     //Attach click event to the marker.
     (function (marker, venueData) {
         google.maps.event.addListener(marker, "click", function (e) {
+
             //Wrap the content inside an HTML DIV in order to set height and width of InfoWindow.
-            infoWindow.setContent("<div style = 'width:200px;min-height:40px'>" +showData.title + "</div>");
+            infoWindow.setContent("<div style = 'width:200px;min-height:40px'>" +venueData.name + "</div>");
             infoWindow.open(map, marker);
         });
     })(marker, venueData);
