@@ -137,7 +137,7 @@ $(document).ajaxComplete(function(){
     marker.addListener('click', function() {
       infowindow.open(map, marker);
     });
-    google.maps.event.addListener(map, 'click', function(event) {
+    google.maps.event.addListener(map, 'mouseover', function(event) {
       addMarker(event.latLng, map);
     });
 
