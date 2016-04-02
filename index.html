@@ -4,6 +4,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <meta charset="utf-8">
   <title>Spur of the Moment</title>
+  <meta name="google-signin-client_id" content="326248196974-oo5p5bn1gl43jd8roju44rrlhtfos4nd.apps.googleusercontent.com">
 
   <!-- Latest compiled and minified CSS // BOOTSTRAP -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -25,8 +26,8 @@
 
 
 
-<!-- google maps API - moved to front -->
-  <!-- script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaNIL3WrVXoIxK_jN1LoFluEYKKY8-qzw&signed_in=true&callback=initMap" async defer></script>
+<!-- google log in API - moved to front -->
+<script src="https://apis.google.com/js/platform.js" async defer></script>
  -->
 </head>
 <body>
@@ -82,6 +83,7 @@
           </div>
           <!-- GOOGLE LOG IN BUTTON -->
           <div class="col-md-12">
+          <div class="g-signin2" data-onsuccess="onSignIn"></div>
           <!-- google sign in script -->
             <script type="text/javascript">
             function onSignIn(googleUser) {
