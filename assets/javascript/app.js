@@ -24,16 +24,18 @@ $(document).ajaxComplete(function(){
   function initMap() {
     var brooklyn = {lat: +40.6, lng: -74},
     map = new google.maps.Map(document.getElementById('googleMap'), {
-      center: {lat: +40.663, lng: -73.982},
-      zoom: 10
+      center: pos
+      // center: {lat: +40.663, lng: -73.982},
+      zoom: 8
     });
     //info window that shows current location
     var infoWindow = new google.maps.InfoWindow({map: map});
     marker = new google.maps.Marker({
-      map: map,
-      draggable: false,
-      animation: google.maps.Animation.DROP,
-      position: {lat: 40.663, lng: -73.982}    
+      map: map
+      draggable: false
+      animation: google.maps.Animation.DROP
+      position: pos
+      // position: {lat: 40.663, lng: -73.982}    
     });
     marker.addListener('click', toggleBounce);
 
