@@ -4,6 +4,8 @@
   <meta name="viewport" content="initial-scale=1.0">
   <meta charset="utf-8">
   <title>Spur of the Moment</title>
+  <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
+
 
   <!-- Latest compiled and minified CSS // BOOTSTRAP -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -16,7 +18,11 @@
   <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
 
   <!-- Facebook source link -->
-  <script id="facebook-jssdk" src="https://connect.facebook.net/en_US/all.js"></script>
+  <script id="facebook-jssdk" src="https://connect.facebook.net/en_US/all.js"></script>]
+
+<!-- google sign in attmept
+ --><script src="https://apis.google.com/js/platform.js" async defer></script>
+
 <!-- Jquery data tables -->
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/t/bs-3.3.6/dt-1.10.11,b-1.1.2,b-colvis-1.1.2,fc-3.2.1,fh-3.1.1,r-2.0.2/datatables.css"/>
   <!-- google maps API - moved to front -->
@@ -28,6 +34,20 @@
  -->
 </head>
 <body>
+<div class="g-signin2" data-onsuccess="onSignIn"></div>
+
+
+<!-- google sign in script -->
+<script type="text/javascript">
+function onSignIn(googleUser) {
+  var profile = googleUser.getBasicProfile();
+  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+  console.log('Name: ' + profile.getName());
+  console.log('Image URL: ' + profile.getImageUrl());
+  console.log('Email: ' + profile.getEmail());
+
+  </script>
+}
 <!--  FACEBOOK SCRIPT - needs to be in the HTML and not the javascript DON'T EDIT -->
 <div id="fb-root"></div>
   <script>
@@ -111,7 +131,7 @@
   </footer>
 
 <script type="text/javascript" src="https://cdn.datatables.net/t/bs-3.3.6/dt-1.10.11,b-1.1.2,b-colvis-1.1.2,fc-3.2.1,fh-3.1.1,r-2.0.2/datatables.js"></script>
-<script src="assets/javascript/app_41.js"></script>
+<script src="assets/javascript/herokuApp.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaNIL3WrVXoIxK_jN1LoFluEYKKY8-qzw&signed_in=true&callback=initMap" async defer></script>
 
 </body>

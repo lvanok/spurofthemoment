@@ -94,9 +94,9 @@ $(document).ajaxComplete(function(){
 
   //initializes google map
   function initMap() {
-    // var brooklyn = {lat: +40.6, lng: -74},
+    var brooklyn = {lat: +40.6, lng: -74},
     map = new google.maps.Map(document.getElementById('googleMap'), {
-      center: {lat: pos.lat, lng: pos.lng},
+      center: {lat: +40.663, lng: -73.982},
       zoom: 10
     });
     //info window that shows current location
@@ -116,8 +116,17 @@ $(document).ajaxComplete(function(){
         marker.setAnimation(google.maps.Animation.BOUNCE);
       }
     }
-
-    var contentString = '<div id="content"><div id="siteNotice"></div><h1 id="firstHeading" class="firstHeading"> + bitResponse[i].title + </h1>';
+    var contentString = '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">Band Name or Header</h1>'+
+      '<div id="bodyContent">'+
+      '<p><b>Content</b>, also <b>more content</b>, is a content '
+      '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
+      'https://en.wikipedia.org/w/index.php?title=Uluru</a> '+
+      '(last visited June 22, 2009).</p>'+
+      '</div>'+
+      '</div>';
 
     var infowindow = new google.maps.InfoWindow({
       content: contentString,
@@ -145,14 +154,14 @@ $(document).ajaxComplete(function(){
         marker = new google.maps.Marker({
           position: myLatlng,
           map: map,
-          title: bitResponse[i].title,
+          label: venueData.name,
         });
       
       //Attach click event to the marker.
       (function (marker, venueData) {
-        google.maps.event.addListener(marker, 'click',function (e) {
+        google.maps.event.addListener(marker, 'mouseover',function (e) {
           //Wrap the content inside an HTML DIV in order to set height and width of InfoWindow.
-          infoWindow.setContent('<div style = "width:200px;min-height:40px">' + bitResponse[i].title + '</div>');
+          infoWindow.setContent("<div class =\'" + "infoPane" + "\'' style = 'width:200px;min-height:40px'>" +venueData.name + "</div>");
           infoWindow.open(map, marker);
         });
       })(marker, venueData);
@@ -166,9 +175,12 @@ $(document).ajaxComplete(function(){
       lat: position.coords.latitude,
       lng: position.coords.longitude
       };
+      latPos = pos.lat;
+      lngPos = pos.lng;
       infoWindow.setPosition(pos);
       infoWindow.setContent('Location found.');
       map.setCenter(pos);
+      center: ({lat: latPos, lng: lngPos});
     }, 
     function() {
       handleLocationError(true, infoWindow, map.getCenter());
@@ -220,7 +232,6 @@ var mapLongLat
     $('#googleMapDiv').show();
 
     var queryURL = "https://api.bandsintown.com/artists/" + userInput + "/events/recommended?location="+pos.lat + "," + pos.lng + "&radius=30&only_recs=false&app_id=RUCB&api_version=2.0&format=json";
-
 
     $.ajax({
 

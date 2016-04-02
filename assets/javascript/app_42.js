@@ -116,8 +116,10 @@ $(document).ajaxComplete(function(){
         marker.setAnimation(google.maps.Animation.BOUNCE);
       }
     }
-
-    var contentString = '<div id="content"><div id="siteNotice"></div><h1 id="firstHeading" class="firstHeading"> + bitResponse[i].title + </h1>';
+    var contentString = '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">Band Name or Header</h1>';
 
     var infowindow = new google.maps.InfoWindow({
       content: contentString,
@@ -145,14 +147,14 @@ $(document).ajaxComplete(function(){
         marker = new google.maps.Marker({
           position: myLatlng,
           map: map,
-          title: bitResponse[i].title,
+          label: bitResponse[i].title,
         });
       
       //Attach click event to the marker.
       (function (marker, venueData) {
-        google.maps.event.addListener(marker, 'click',function (e) {
+        google.maps.event.addListener(marker, 'mouseover',function (e) {
           //Wrap the content inside an HTML DIV in order to set height and width of InfoWindow.
-          infoWindow.setContent('<div style = "width:200px;min-height:40px">' + bitResponse[i].title + '</div>');
+          infoWindow.setContent("<div style = 'width:200px;min-height:40px'>" +showData.title + "</div>");
           infoWindow.open(map, marker);
         });
       })(marker, venueData);
@@ -219,9 +221,7 @@ var mapLongLat
     $('#userInput').val("");
     $('#googleMapDiv').show();
 
-    var queryURL = "https://api.bandsintown.com/artists/" + userInput + "/events/recommended?location="+pos.lat + "," + pos.lng + "&radius=30&only_recs=false&app_id=RUCB&api_version=2.0&format=json";
-
-
+    $(venueLatLon).push("lat:"+bitResponse[i].venue.latitude + " lon:" + bitResponse[i].venue.longitude);$(venueLatLon).push("lat:"+bitResponse[i].venue.latitude + " lon:" + bitResponse[i].venue.longitude);
     $.ajax({
 
       userInput: userInput,
