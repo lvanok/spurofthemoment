@@ -21,8 +21,8 @@ html, body {
   margin: 0;
 }
 .wrapper {
-  height: 100%;
-  width: 100%;
+  min-height: 100%;
+  width: 100%
   margin: 0 auto -50px; /* the bottom margin is the negative value of the footer's height */
 }
 .footer, .push {
