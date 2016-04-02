@@ -28,33 +28,28 @@ $(document).ajaxComplete(function(){
       zoom: 10
     });
     //info window that shows current location
-    // var infoWindow = new google.maps.InfoWindow({map: map});
-    // marker = new google.maps.Marker({
-    //   map: map,
-    //   draggable: false,
-    //   animation: google.maps.Animation.DROP,
-    //   position: {lat: 40.663, lng: -73.982}    
-    // });
-    // marker.addListener('click', toggleBounce);
+    var infoWindow = new google.maps.InfoWindow({map: map});
+    marker = new google.maps.Marker({
+      map: map,
+      draggable: false,
+      animation: google.maps.Animation.DROP,
+      position: {lat: 40.663, lng: -73.982}    
+    });
+    marker.addListener('click', toggleBounce);
 
-    // function toggleBounce() {
-    //   if (marker.getAnimation() !== null) {
-    //     marker.setAnimation(null);
-    //   } else {
-    //     marker.setAnimation(google.maps.Animation.BOUNCE);
-    //   }
-    // }
-    // var contentString = '<div id="content">'+
-    //   '<div id="siteNotice">'+
-    //   '</div>'+
-    //   '<h1 id="firstHeading" class="firstHeading">Band Name or Header</h1>'+
-    //   '<div id="bodyContent">'+
-    //   '<p><b>Content</b>, also <b>more content</b>, is a content '
+    function toggleBounce() {
+      if (marker.getAnimation() !== null) {
+        marker.setAnimation(null);
+      } else {
+        marker.setAnimation(google.maps.Animation.BOUNCE);
+      }
+    }
+    var contentString = ""
 
-    // var infowindow = new google.maps.InfoWindow({
-    //   content: contentString,
-    //   maxWidth: 250
-    // });
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString,
+      maxWidth: 250
+    });
 
     //event listener that calls addmarker() when the map is clicked
     marker.addListener('click', function() {
