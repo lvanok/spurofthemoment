@@ -1,3 +1,7 @@
+// hides the google map div until after the submit button is selected
+$(document).ready(function(){
+  $('#googleMapDiv').hide();
+})
 // FACEBOOK LOGIN API
 // This is called with the results from from FB.getLoginStatus().
   function statusChangeCallback(response) {
@@ -71,9 +75,14 @@
     );
   };
 
+  //prevents googlemaps and create tab function from running until the ajax call is complete 
+$(document).ajaxComplete(function(){
+    createTable();
+})
 //GOOGLE MAPS SCRIPT
   // global variable for position. this will end up storingthe user's position
   var pos = "";
+
 
   var map;
   //used to name the markers that will appear when user clicks
@@ -107,17 +116,19 @@
         marker.setAnimation(google.maps.Animation.BOUNCE);
       }
     }
-    var contentString = '<div id="content">'+
-      '<div id="siteNotice">'+
-      '</div>'+
-      '<h1 id="firstHeading" class="firstHeading">Band Name or Header</h1>'+
-      '<div id="bodyContent">'+
-      '<p><b>Content</b>, also <b>more content</b>, is a content '
-      '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
-      'https://en.wikipedia.org/w/index.php?title=Uluru</a> '+
-      '(last visited June 22, 2009).</p>'+
-      '</div>'+
-      '</div>';
+
+    var contentString = '';
+    // var contentString = '<div id="content">'+
+    //   '<div id="siteNotice">'+
+    //   '</div>'+
+    //   '<h1 id="firstHeading" class="firstHeading">Band Name or Header</h1>'+
+    //   '<div id="bodyContent">'+
+    //   '<p><b>Content</b>, also <b>more content</b>, is a content '
+    //   '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
+    //   'https://en.wikipedia.org/w/index.php?title=Uluru</a> '+
+    //   '(last visited June 22, 2009).</p>'+
+    //   '</div>'+
+    //   '</div>';
 
     var infowindow = new google.maps.InfoWindow({
       content: contentString,
@@ -128,7 +139,7 @@
     marker.addListener('click', function() {
       infowindow.open(map, marker);
     });
-    google.maps.event.addListener(map, 'click', function(event) {
+    google.maps.event.addListener(map, 'mouseover', function(event) {
       addMarker(event.latLng, map);
     });
 
@@ -139,20 +150,20 @@
     function addMarker(location, map) {
       // Add the marker at the clicked location, and add the next-available label from the array of alphabetical characters.
       for (var i = 0; i < bitResponse.length; i++) {
-        var venueData = bitResponse[i].venue;
-        var showData = bitResponse[i];
-        var myLatlng = new google.maps.LatLng(venueData.latitude, venueData.longitude);
-        var marker = new google.maps.Marker({
+        venueData = bitResponse[i].venue;
+        showData = bitResponse[i];
+        myLatlng = new google.maps.LatLng(venueData.latitude, venueData.longitude);
+        marker = new google.maps.Marker({
           position: myLatlng,
           map: map,
-          label: bitResponse.title
+          label: bitResponse[i].title,
         });
       
       //Attach click event to the marker.
       (function (marker, venueData) {
         google.maps.event.addListener(marker, "click",function (e) {
           //Wrap the content inside an HTML DIV in order to set height and width of InfoWindow.
-          infoWindow.setContent("<div style = 'width:200px;min-height:40px'>" +showData.title + "</div>");
+          infoWindow.setContent('<div style = "width:200px;min-height:40px">' + showData.title + '</div>');
           infoWindow.open(map, marker);
         });
       })(marker, venueData);
@@ -183,8 +194,9 @@
     infoWindow.setContent(browserHasGeolocation ?
     'Error: The Geolocation service failed.' :
     'Error: Your browser doesn\'t support geolocation.');
+    }
   }
-}
+
 
 // BANDS IN TOWN API
 
@@ -216,8 +228,10 @@ var mapLongLat
     userInput= $("#userInput").val().trim();
     createArtistList();
     $('#userInput').val("");
+    $('#googleMapDiv').show();
 
-    var queryURL = "https://api.bandsintown.com/artists/" + userInput + "/events/recommended?location=new+york,NY&radius=10&app_id=RUCB&api_version=2.0&format=json";
+    var queryURL = "https://api.bandsintown.com/artists/" + userInput + "/events/recommended?location="+pos.lat + "," + pos.lng + "&radius=30&only_recs=false&app_id=RUCB&api_version=2.0&format=json";
+
 
     $.ajax({
 
@@ -235,10 +249,11 @@ var mapLongLat
       },
 
       success: function( response ) {
-        console.log(response); 
+
         bitResponse = response;
+        console.log(bitResponse); 
         addToArray();
-        createTable();
+
       },
     })
     return false;
@@ -246,17 +261,18 @@ var mapLongLat
 
       function addToArray(){  
         for(var i = 0; i < bitResponse.length; i++){
+           //pushes all other info from object to the other info array
+           $(otherInfo).push(bitResponse[i]); 
 
             // pushes the name and lat long of the venues into an array stored in a global variable
 
-           venueNames.push(bitResponse[i].venue.name);
+           $(venueNames).push(bitResponse[i].venue.name);
 
-           midstepLocations.push(bitResponse[i].venue);
+           $(midstepLocations).push(bitResponse[i].venue);
 
-           venueLatLon.push("lat:"+bitResponse[i].venue.latitude + " lon:" + bitResponse[i].venue.longitude);
+           $(venueLatLon).push("lat:"+bitResponse[i].venue.latitude + " lon:" + bitResponse[i].venue.longitude);
 
-           //pushes all other info from object to the other info array
-           otherInfo.push(bitResponse[i]);
+
 
            // second for loop for the artist information
 
@@ -264,13 +280,15 @@ var mapLongLat
 
             // after spending time trying to get the names to push into array, got it to work, but decided to push the entire artist object into an array for the global variable called "midstep"
 
-            midstepArtists.push(bitResponse[i].artists[j]);
+            $(midstepArtists).push(bitResponse[i].artists[j]);
 
-           bands.push(bitResponse[i].artists[j].name);
+           $(bands).push(bitResponse[i].artists[j].name);
 
            };
+
     };
 };
+
 
 
 
@@ -285,28 +303,24 @@ function createArtistList(){
 //code to add information and create the table
 var tablePrefix = 'table';
 var tableId = '';
-var labelPrefix = 'label';
+var labelPrefix = 'listItem';
 var labelId = '';
 
 function createTable(){
   for(var i=0; i < bitResponse.length; i++){
-    //this creates the id for the header of the table
+
+    //creates the panel for the table
     tableId = tablePrefix + i;
     //this creates the id for the body of the table
     bodyId = labelPrefix +i;
-    //this creates the variable tableRow which is for the header of each table
-    var tableRow = $('<a href= "#'+bodyId+'" id="' + tableId + '" class="btn btn-info" data-toggle="collapse"></a>');
-    //this sets the text of the header to the name pulled from the bands in town api object
-    $(tableRow).text(midstepArtists[i].name);
 
-    //creates the variable bodyRow which is for the body of each artist table
-    var bodyRow = $('<div id="'+bodyId+'" class="collapse></div>');
-    $(bodyRow).text(otherInfo[i].title);
+    blankOutside = $('<div></div>');
+    $('#table').append(blankOutside);
 
-    $(tableRow).append(bodyRow)
-    $('#table').append(tableRow);
+    main = $('<div class="panel panel-default"> <div class="panel-heading" id="#'+tableId+'">'+bitResponse[i].title+'</div><div class="panel-body"> <img src="'+bitResponse[i].artists[0].thumb_url+'"></div><ul id="#'+bodyId+'" class="list-group"> <li class="list-group-item"> Website: <a href="'+bitResponse[i].artists[0].website+'">'+bitResponse[i].artists[0].url+' </li> <li class="list-group-item">  </li></ul></div>');
+    $(main).insertAfter(blankOutside);
+    
+
   };
-  console.log(venueNames[i]);
-  console.log(otherInfo[i].title);
-  console.log(midstepArtists[i].name);
+
 }
