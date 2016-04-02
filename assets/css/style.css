@@ -27,9 +27,10 @@ html, body {
 .footer, .push {
   height: 50px; /* .push must be the same height as .footer */
   clear: both;
-  background-color: #fff;
 }
-
+.footer {
+    background-color: #fff;
+}
 #footer {
   padding: 0px !important;
   margin: 0px !important;
