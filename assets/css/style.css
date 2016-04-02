@@ -1,0 +1,52 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+#googleMap {
+  height: 400px;
+  width: 100%;
+}
+#container {
+  height: 100%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+#jumbotron, div {
+	text-align: center;
+	align-content: center;
+}
+* {
+  margin: 0;
+}
+.wrapper {
+  min-height: 100%;
+  width: 100%
+  margin: 0 auto -50px; /* the bottom margin is the negative value of the footer's height */
+}
+.footer, .push {
+  height: 50px; /* .push must be the same height as .footer */
+  clear: both;
+}
+.footer {
+    background-color: #fff;
+}
+#footer {
+  padding: 0px !important;
+  margin: 0px !important;
+}
+#googleMap{
+  height:  400px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.g-signin2{
+  float: right !important;
+  margin-right: 45% !important;
+}
+/*
+Sticky Footer by Ryan Fait
+http://ryanfait.com/
+
+*/
