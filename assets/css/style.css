@@ -35,6 +35,9 @@ html, body {
   padding: 0px !important;
   margin: 0px !important;
 }
+#googleMap{
+  display: initial !important;
+}
 /*
 
 Sticky Footer by Ryan Fait
