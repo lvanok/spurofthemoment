@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-# spurofthemoment
-=======
+
 # SpurOfTheMoment
 
 ###Synopsis:
