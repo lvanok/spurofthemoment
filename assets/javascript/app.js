@@ -145,7 +145,6 @@ var mapLongLat
 
   $('#submitButton').on('click', function(){
     userInput= $("#userInput").val().trim();
-    createArtistList();
     $('#userInput').val("");
     $('#googleMapDiv').show();
     $('#photoCarousel').hide();
