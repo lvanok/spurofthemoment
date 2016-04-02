@@ -82,18 +82,20 @@
             <h2 class="brand-before"> Log In with Google to get started! </h2>
           </div>
           <!-- GOOGLE LOG IN BUTTON -->
-          <div class="col-md-12">
-          <div class="g-signin2" data-onsuccess="onSignIn"></div>
-          <!-- google sign in script -->
-            <script type="text/javascript">
-            function onSignIn(googleUser) {
-              var profile = googleUser.getBasicProfile();
-              console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-              console.log('Name: ' + profile.getName());
-              console.log('Image URL: ' + profile.getImageUrl());
-              console.log('Email: ' + profile.getEmail());
-            }
-              </script>
+          <div class="row">
+            <div class="col-md-4 col-offset-md-4">
+              <div class="g-signin2" data-onsuccess="onSignIn"></div>
+              <!-- google sign in script -->
+                <script type="text/javascript">
+                function onSignIn(googleUser) {
+                  var profile = googleUser.getBasicProfile();
+                  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+                  console.log('Name: ' + profile.getName());
+                  console.log('Image URL: ' + profile.getImageUrl());
+                  console.log('Email: ' + profile.getEmail());
+                }
+                </script>
+              </div>
             </div>
           </div>
         </div>
