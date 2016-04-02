@@ -148,7 +148,7 @@ var mapLongLat
     createArtistList();
     $('#userInput').val("");
     $('#googleMapDiv').show();
-    $('#carousel').hide();
+    $('#photoCarousel').hide();
 
     var queryURL = "https://api.bandsintown.com/artists/" + userInput + "/events/recommended?location="+pos.lat + "," + pos.lng + "&radius=30&only_recs=false&app_id=RUCB&api_version=2.0&format=json";
 
