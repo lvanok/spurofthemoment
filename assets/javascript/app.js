@@ -83,6 +83,7 @@ $(document).ajaxComplete(function(){
   // global variable for position. this will end up storingthe user's position
   var pos = "";
 
+
   var map;
   //used to name the markers that will appear when user clicks
   var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -227,7 +228,7 @@ var mapLongLat
     $('#userInput').val("");
     $('#googleMapDiv').show();
 
-    var queryURL = "https://api.bandsintown.com/artists/" + userInput + "/events/recommended?location=" + pos + "&radius=10&app_id=RUCB&api_version=2.0&format=json";
+    var queryURL = "https://api.bandsintown.com/artists/" + userInput + "/events/recommended?location="+pos.lat + "," + pos.lng + "&radius=10&app_id=RUCB&api_version=2.0&format=json";
 
     $.ajax({
 
