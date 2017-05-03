@@ -25,7 +25,11 @@ $(document).ajaxComplete(function(){
     var brooklyn = {lat: +40.6, lng: -74},
     map = new google.maps.Map(document.getElementById('googleMap'), {
       center: {lat: +40.663, lng: -73.982},
+<<<<<<< HEAD
       zoom: 10
+=======
+      zoom: 10,
+>>>>>>> 54e1a25febdb4da8de1ecfa4fa6fe667d11c635e
     });
     //info window that shows current location
     var infoWindow = new google.maps.InfoWindow({map: map});
@@ -79,7 +83,11 @@ $(document).ajaxComplete(function(){
       (function (marker, venueData) {
         google.maps.event.addListener(marker, 'click',function (e) {
           //Wrap the content inside an HTML DIV in order to set height and width of InfoWindow.
+<<<<<<< HEAD
           infoWindow.setContent("<div class =\'" + "infoPane" + "\'' style = 'width:200px;min-height:40px'>" +"<h1><b>"+ venueData.name + "</h1></b></div>");
+=======
+          infoWindow.setContent("<div class =\'" + "infoPane" + "\'' style = 'width:200px;min-height:40px'>" +"<h1><small>"+ venueData.name +" </small></h1></div>");
+>>>>>>> 54e1a25febdb4da8de1ecfa4fa6fe667d11c635e
           infoWindow.open(map, marker);
         });
       })(marker, venueData);
@@ -89,6 +97,11 @@ $(document).ajaxComplete(function(){
   // Try HTML5 geolocation.
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
+<<<<<<< HEAD
+=======
+      // pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+      // map.setCenter(pos);
+>>>>>>> 54e1a25febdb4da8de1ecfa4fa6fe667d11c635e
       pos = {
       lat: position.coords.latitude,
       lng: position.coords.longitude
@@ -145,7 +158,10 @@ var mapLongLat
 
   $('#submitButton').on('click', function(){
     userInput= $("#userInput").val().trim();
+<<<<<<< HEAD
     createArtistList();
+=======
+>>>>>>> 54e1a25febdb4da8de1ecfa4fa6fe667d11c635e
     $('#userInput').val("");
     $('#googleMapDiv').show();
     $('#photoCarousel').hide();
@@ -236,7 +252,11 @@ function createTable(){
     blankOutside = $('<div></div>');
     $('#table').append(blankOutside);
 
+<<<<<<< HEAD
     main = $('<div class="panel panel-default"> <div class="panel-heading" id="#'+tableId+'">'+bitResponse[i].title+'</div><div class="panel-body"> <img src="'+bitResponse[i].artists[0].thumb_url+'"></div><ul id="#'+bodyId+'" class="list-group"> <li class="list-group-item"> Website: <a href="'+bitResponse[i].artists[0].website+'">'+bitResponse[i].artists[0].url+' </a> </li> <li class="list-group-item">'+bitResponse[i].formatted_datetime+' </li> <li class="list-group-item"> Get Tickets: <a href="'+ bitResponse[i].ticket_url +'"> '+bitResponse[i].ticket_type+' </a> </li><li class="list-group-item">Ticket Status:'+bitResponse[i].ticket_status+'  </li></ul></div>');
+=======
+    main = $('<div class="panel panel-default"> <div class="panel-heading" id="#'+tableId+'">'+bitResponse[i].title+'</div><div class="panel-body"> <img src="'+bitResponse[i].artists[0].thumb_url+'"></div><ul id="#'+bodyId+'" class="list-group"> <li class="list-group-item"> Website: <a href="'+bitResponse[i].artists[0].website+'">'+bitResponse[i].artists[0].url+' </a> </li> <li class="list-group-item">'+bitResponse[i].formatted_datetime+' </li> <li class="list-group-item"> '+bitResponse[i].venue.name+' <br> '+bitResponse[i].venue.city+', '+bitResponse[i].venue.region+' </li> <li class="list-group-item"> Get Tickets: <a href="'+ bitResponse[i].ticket_url +'"> '+bitResponse[i].ticket_type+' </a> </li> </ul></div>');
+>>>>>>> 54e1a25febdb4da8de1ecfa4fa6fe667d11c635e
     $(main).insertAfter(blankOutside);
     
 
